@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="opcoes">
+        <item>Conteúdo</item>
+        <item>Configurações</item>
+        <item>Ajuda</item>
+        <item>Legal</item>
+    </string-array>
+</resources>

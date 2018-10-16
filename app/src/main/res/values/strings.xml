@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">AppBio</string>
+    <string name="app_name">HistoQuiz</string>
+    <string name="description_logo">App logo</string>
+    <string name="victor">Victor de Castro Farias</string>
+    <string name="reully">Reully Mary</string>
+    <string name="silvia">Silvia Celina</string>
+    <string name="description_ifam">Logo IFAM</string>
 </resources>
