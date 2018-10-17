@@ -1,6 +1,5 @@
 package com.example.aluno.appbio.Interface;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -10,14 +9,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.aluno.appbio.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class TelaPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ModoQuiz extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -31,7 +30,7 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_principal);
+        setContentView(R.layout.activity_modo_quiz);
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -43,45 +42,31 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @OnClick(R.id.btnModoEstudo)
-    public void modoEstudo() {
-        Intent i = new Intent(this, ModoEstudo.class);
-        startActivity(i);
-    }
-
-    @OnClick(R.id.btnModoQuiz)
-    public void modoQuiz() {
-        Intent i = new Intent(this, ModoEstudo.class);
-        startActivity(i);
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_item_inicio: {
+                Toast.makeText(this, R.string.inicio, Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_item_conteudo_programatico: {
-                Intent i = new Intent(this, ConteudoProgramatico.class);
-                startActivity(i);
+                Toast.makeText(this, R.string.conteudo_programatico, Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_item_configuracoes: {
-                Intent i = new Intent(this, Configuracoes.class);
-                startActivity(i);
+                Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_item_ajuda: {
-                Intent i = new Intent(this, Ajuda.class);
-                startActivity(i);
+                Toast.makeText(this, "Ajuda", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.nav_item_legal: {
-                Intent i = new Intent(this, Legal.class);
-                startActivity(i);
+                Toast.makeText(this, "Legal", Toast.LENGTH_SHORT).show();
                 break;
             }
             default: {
+                Toast.makeText(this, "Menu Default", Toast.LENGTH_SHORT).show();
                 break;
             }
         }

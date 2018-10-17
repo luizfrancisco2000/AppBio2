@@ -15,9 +15,8 @@ import com.example.aluno.appbio.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class TelaPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Ajuda extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -31,7 +30,8 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_principal);
+        setContentView(R.layout.activity_ajuda);
+
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
@@ -43,22 +43,12 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @OnClick(R.id.btnModoEstudo)
-    public void modoEstudo() {
-        Intent i = new Intent(this, ModoEstudo.class);
-        startActivity(i);
-    }
-
-    @OnClick(R.id.btnModoQuiz)
-    public void modoQuiz() {
-        Intent i = new Intent(this, ModoEstudo.class);
-        startActivity(i);
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_item_inicio: {
+                Intent i = new Intent(this, TelaPrincipal.class);
+                startActivity(i);
                 break;
             }
             case R.id.nav_item_conteudo_programatico: {
@@ -72,8 +62,6 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
                 break;
             }
             case R.id.nav_item_ajuda: {
-                Intent i = new Intent(this, Ajuda.class);
-                startActivity(i);
                 break;
             }
             case R.id.nav_item_legal: {

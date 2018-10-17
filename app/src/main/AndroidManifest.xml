@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.aluno.appbio">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- Splash loading-->
+        <!-- Splash loading -->
         <activity
             android:name=".Interface.Splash"
             android:label="@string/app_name"
@@ -23,12 +29,32 @@
             </intent-filter>
         </activity>
 
-        <!-- Tela Principal/Inicial -->
+        <!-- tela principal -->
         <activity
             android:name=".Interface.TelaPrincipal"
-            android:label="@string/app_name">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Interface.ModoEstudo"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Interface.ModoQuiz"
+            android:theme="@style/AppTheme.NoActionBar" />
 
-        </activity>
+        <activity
+            android:name=".Interface.ConteudoProgramatico"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Interface.Configuracoes"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Interface.Ajuda"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".Interface.Legal"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

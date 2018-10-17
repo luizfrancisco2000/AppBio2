@@ -5,4 +5,18 @@
     <string name="reully">Reully Mary</string>
     <string name="silvia">Silvia Celina</string>
     <string name="description_ifam">Logo IFAM</string>
+    <string name="abrir_menu">Abrir</string>
+    <string name="fechar_menu">Fechar</string>
+    <string name="title_activity_tela_principal">Tela Principal</string>
+    <string name="conteudo_programatico">Conteúdo Programático</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="legal">Legal</string>
+    <string name="inicio">Início</string>
+    <string name="modo_estudo">Modo Estudo</string>
+    <string name="modo_quiz">Modo Quiz</string>
+    <string name="habilitar_tela_bloqueio">Selecione para habilitar o modo na tela de bloqueio</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
