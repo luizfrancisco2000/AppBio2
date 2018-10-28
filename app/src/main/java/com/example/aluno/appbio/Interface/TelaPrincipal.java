@@ -1,6 +1,9 @@
 package com.example.aluno.appbio.Interface;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,9 +12,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
+import com.example.aluno.appbio.Repository.AssuntoRepository;
+import com.example.aluno.appbio.Repository.ConteudoRepository;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,6 +50,12 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        popularBanco();
+    }
+
+    private void popularBanco() {
+        new PopularBanco().execute(TelaPrincipal.this);
     }
 
     @OnClick(R.id.btnModoEstudo)
@@ -51,7 +66,7 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
     @OnClick(R.id.btnModoQuiz)
     public void modoQuiz() {
-        Intent i = new Intent(this, ModoEstudo.class);
+        Intent i = new Intent(this, ModoQuiz.class);
         startActivity(i);
     }
 
@@ -95,6 +110,41 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
             layout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    private class PopularBanco extends AsyncTask<Context, Void, Void> {
+        ProgressDialog progressDialog;
+
+        @Override
+        protected Void doInBackground(Context... contexts) {
+            try {
+                List<Assunto> assuntos = AssuntoRepository.populaBanco(TelaPrincipal.this);
+
+                for (Assunto a : assuntos) {
+                    ConteudoRepository.populaBanco(a, TelaPrincipal.this);
+                }
+
+            } catch (Exception e) {
+                Log.i("ERRO NO CADASTRO", e.getMessage());
+
+                progressDialog.dismiss();
+                cancel(true);
+            }
+
+            return null;        }
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog = new ProgressDialog(TelaPrincipal.this);
+            progressDialog.setMessage("Iniciando banco de dados!");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
         }
     }
 }

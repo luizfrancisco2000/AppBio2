@@ -16,6 +16,77 @@
         <include layout="@layout/toolbar" />
 
         <!-- Componentes aqui -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_view_pontos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pontuacao_inicial"
+                android:textColor="@color/preto" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_pontos"
+                android:text="@string/perguntas"
+                android:textColor="@color/preto" />
+
+            <TextView
+                android:id="@+id/text_view_tempo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/tempo"
+                android:textColor="@color/preto"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/txt_pergunta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/group_respostas"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="center"
+                android:textColor="@color/preto"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/group_respostas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <RadioButton
+                    android:id="@+id/op1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/op2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/op3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_confirmar_proximo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/group_respostas"
+                android:layout_marginTop="16dp"
+                android:text="@string/confirmar" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 

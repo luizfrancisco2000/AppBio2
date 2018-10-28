@@ -9,6 +9,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.aluno.appbio.R;
@@ -40,7 +41,14 @@ public class ModoQuiz extends AppCompatActivity implements NavigationView.OnNavi
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        comecarQuiz();
     }
+
+    private void comecarQuiz(){
+
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
