@@ -106,11 +106,11 @@ public class Conteudo implements Serializable {
             case "Tecido Epitelial":
                 conteudos = new Conteudo[]{
                         new Conteudo("O tecido epitelial glandular tem a capacidade de:", "Revestir, Sintetizar, Secretar", assunto_id),
-                        new Conteudo("O tecido epitelial caracteriza-se por apresentar:", "Pouca quantidade de material intercelular, Células justapostas, Aus~encia de vasos sangíneos", assunto_id),
+                        new Conteudo("O tecido epitelial caracteriza-se por apresentar:", "Pouca quantidade de material intercelular, Células justapostas, Ausência de vasos sangíneos", assunto_id),
                         new Conteudo("Os epitélios podem ser classificados em:", "Epitélio Simples, Estratificados, Pseudo-estratificados", assunto_id),
                         new Conteudo("As formas das células do tecido epitelial são classificadas em:", "Pavimentosas, Cúbicas, Prismáticas", assunto_id),
                         new Conteudo("Os epitélios são classificados em dois tipos principais:", "Espitélios de Revestimento, Epitélios Glandulares", assunto_id),
-                        new Conteudo("O tecido epitelial apresenta células…", "mantudas pelo Glicocálix e íon cálcio, Aderidas pelos desmossomos e interdigitações", assunto_id),
+                        new Conteudo("O tecido epitelial apresenta células…", "mantidas pelo Glicocálix e íon cálcio, Aderidas pelos desmossomos e interdigitações", assunto_id),
                         new Conteudo("A substância intercelular do tecido epitelial é formada por:", "Glicoproteínas", assunto_id),
                         new Conteudo("Os tecidos epiteliais são:", "Avascularizados (sem vasos sanguíneos)", assunto_id),
                         new Conteudo("O tecido epitelial é apoiado pelo tecido conjuntivo", "Nutrem o epitélio por meio de difusão", assunto_id),
@@ -130,9 +130,9 @@ public class Conteudo implements Serializable {
                         new Conteudo("Especialização das Células Epiteliais - Cílios:", "Estruturas microscópicas móveis presentes em células da traqueia e das tubas uterinas", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Microvilosidades:", "Estruturas projetadas na superfície apical das células absortivas, Ampliam a superfície de contato das células intestinais com o conteúdo externo, Aumentam a absorção de nutrientes", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Interdigitações:", "Dobras internas da membrana plasmática em células de alguns epitélios, Aumentam a superfície de contato entre as células, Facilitam o intercâmbio de substâncias.", assunto_id),
-                        new Conteudo("Especialização das Células Epiteliais - Junções Intercelulares:", "Fornecem grande coesão ao tecido epitelial tornando altamente resistente a trações. ", assunto_id),
+                        new Conteudo("Especialização das Células Epiteliais - Junções Intercelulares:", "Fornecem grande coesão ao tecido epitelial tornando altamente resistente a trações", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Principais Junções Intercelulares:", "Junção de Oclusão - Junção de Adesão, Desmossomos – Hemidesmossomos, Junções Comunicantes", assunto_id),
-                        new Conteudo("Tecido Epitelial Glandular:", "Produzem substâncias chamadas secreções, Podem ser utilizadas e outras partes do corpo ou eliminadas do organismo", assunto_id),
+                        new Conteudo("Tecido Epitelial Glandular:", "Produzem substâncias chamadas secreções, Podem ser utilizadas em outras partes do corpo ou eliminadas do organismo", assunto_id),
                         new Conteudo("Tecido Epitelial Glandular - Secreções:", "Mucosas: Espessas e ricas em muco. Ex: Glândulas salivares, Serosas: Fluídas, aquosas e ricas em proteína. Ex: Glândulas excretoras do pâncreas, Mistas: Quando ocorre secreções mucosas e serosas juntas. Ex: Glândulas Salivares Parótidas", assunto_id),
                         new Conteudo("Tecido Epitelial Glandular:", "As glândulas podem ser: unicelulares e multicelulares", assunto_id),
                         new Conteudo("Tecido Epitelial Glandular - Glândula Unicelular: Caliciforme", "Ocorre no tecido epitelial da traquéia", assunto_id),
@@ -149,14 +149,14 @@ public class Conteudo implements Serializable {
                 break;
             case "Tecido Adiposo":
                 conteudos = new Conteudo[]{
-                        new Conteudo("A função do tecido adiposo é de :", "Armazenar energia na forma de triglicerídeos, Contribuir para a forma externa do corpo, Amortecer/proteger o organismo contra choques mecânicos, Realizar isolamento térmico, Preencher espaços entre outros tecidos/órgãos", assunto_id)
+                        new Conteudo("A função do tecido adiposo é de:", "Armazenar energia na forma de triglicerídeos, Contribuir para a forma externa do corpo, Amortecer/proteger o organismo contra choques mecânicos, Realizar isolamento térmico, Preencher espaços entre outros tecidos/órgãos", assunto_id)
                 };
                 break;
             case "Tecido Cartilaginoso":
                 conteudos = new Conteudo[]{
 
                         new Conteudo("Os tipos celulares do tecido Cartilaginoso são formados por:", "Condroblastos, Condrócitos", assunto_id),
-                        new Conteudo("As características do tecido Cartilaginoso são: ", "Origem mesenquimática, Proporção células/matriz extracelular semelhante ao conjuntivo, A matriz é secretada pelas células da cartilagem e é a responsável pelas diferentes características e propriedades da mesma", assunto_id),
+                        new Conteudo("As características do tecido Cartilaginoso são:", "Origem mesenquimática, Proporção células/matriz extracelular semelhante ao conjuntivo, A matriz é secretada pelas células da cartilagem e é a responsável pelas diferentes características e propriedades da mesma", assunto_id),
                         new Conteudo("Os tipos de cartilagem do tecido cartilaginoso são formados por:", "Fibrosa: Fibras colágenas do tipo I, Hialina: Fibras colágenas do tipo II, Elástica: Fibras colágenas do tipo II e fibras elásticas ", assunto_id),
                         new Conteudo("A cartilagem Hialina tem aspecto:", "Aspecto macroscópico: leitoso / azulado, Cortes histológicos: transparente (hialina),  Presente no esqueleto embrionário / articulações dos ossos longos / traqueia e brônquios / nariz.", assunto_id)
                 };

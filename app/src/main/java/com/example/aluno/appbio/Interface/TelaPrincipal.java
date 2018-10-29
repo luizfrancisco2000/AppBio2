@@ -19,6 +19,7 @@ import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
 import com.example.aluno.appbio.Repository.AssuntoRepository;
 import com.example.aluno.appbio.Repository.ConteudoRepository;
+import com.example.aluno.appbio.Repository.PerguntaRepository;
 
 import java.util.List;
 
@@ -56,15 +57,16 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
     }
 
     private void popularBanco() {
-        boolean res = false;
+        boolean res = true;
 
         try {
-            res = new TesteBanco().execute().get();
+            res = new IsBancoVazio().execute().get();
         } catch (Exception e) {
             Log.e("ERRO TESTE", e.getMessage());
         }
-
-        if (!res) {
+        Log.i("TESTE BANCO", "" + res);
+        if (res) {
+            Log.i("TESTE BANCO", "POPULANDO BANCO");
             new PopularBanco().execute(TelaPrincipal.this);
         }
     }
@@ -142,25 +144,21 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
             try {
                 Log.i("POPULAR BANCO", "Salvando assuntos");
                 List<Assunto> assuntos = AssuntoRepository.populaBanco(TelaPrincipal.this);
-
                 progressDialog.setProgress(10);
-
                 for (Assunto a : assuntos) {
-                    Log.i("POPULAR BANCO", "SALVANDO" + a.getNome());
+                    Log.i("POPULAR BANCO", "SALVANDO " + a.getNome() + " id: " + a.getId());
                     ConteudoRepository.populaBanco(a, TelaPrincipal.this);
                     progressDialog.setProgress(progressDialog.getProgress() * 2);
                 }
-
+                PerguntaRepository.populaBanco(TelaPrincipal.this);
+                progressDialog.setProgress(100);
             } catch (Exception e) {
                 Log.i("ERRO NO CADASTRO", e.getMessage());
-
                 progressDialog.dismiss();
                 cancel(true);
             }
-
             return null;
         }
-
 
         @Override
         protected void onPostExecute(Void aVoid) {
@@ -168,22 +166,21 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         }
     }
 
-
-    private class TesteBanco extends AsyncTask<Void, Void, Boolean> {
-
+    private class IsBancoVazio extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected Boolean doInBackground(Void... voids) {
             try {
-                if (AssuntoRepository.getAll(TelaPrincipal.this) != null) {
+                List<Assunto> assuntos = AssuntoRepository.getAll(TelaPrincipal.this);
+                if (assuntos == null) {
+                    Log.e("ASSUNTO TESTE NULL", "" + assuntos.size());
                     return true;
                 } else {
                     return false;
                 }
             } catch (Exception e) {
-                Log.i("ERRO CONSUL ASSUNTO", e.getMessage());
+                Log.e("ERRO TESTE BANCO", e.getMessage());
                 return false;
             }
         }
     }
-
 }

@@ -29,6 +29,7 @@
                 android:textColor="@color/preto" />
 
             <TextView
+                android:id="@+id/text_view_num_perguntas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_pontos"

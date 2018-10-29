@@ -13,7 +13,7 @@ public interface PerguntaDao {
     void salvar(Pergunta pergunta);
 
     @Insert
-    void salvarLista(Pergunta[] perguntas);
+    void salvarTodos(Pergunta[] perguntas);
 
     @Query("SELECT * FROM pergunta")
     List<Pergunta> getAll();

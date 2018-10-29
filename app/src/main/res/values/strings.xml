@@ -16,7 +16,7 @@
     <string name="modo_estudo">Modo Estudo</string>
     <string name="modo_quiz">Modo Quiz</string>
     <string name="habilitar_tela_bloqueio">Selecione para habilitar o modo na tela de bloqueio</string>
-    <string name="pontuacao_inicial">Respostas certas: 0</string>
+    <string name="pontuacao_inicial">Pontos: 0</string>
     <string name="perguntas">Pergunta: 1/X</string>
     <string name="tempo">00:30</string>
     <string name="confirmar">Confirmar</string>

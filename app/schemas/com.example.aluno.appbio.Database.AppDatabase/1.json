@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5c6a0903cba1574fd34fcfa1f4b77a50",
+    "identityHash": "15029ad94c6b004bb09d4b5b9c142f51",
     "entities": [
       {
         "tableName": "assunto",
@@ -113,6 +113,91 @@
         ]
       },
       {
+        "tableName": "pergunta",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `pergunta` TEXT NOT NULL, `op1` TEXT NOT NULL, `op2` TEXT NOT NULL, `op3` TEXT NOT NULL, `resposta` INTEGER NOT NULL, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pergunta",
+            "columnName": "pergunta",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "op1",
+            "columnName": "op1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "op2",
+            "columnName": "op2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "op3",
+            "columnName": "op3",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "resposta",
+            "columnName": "resposta",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assunto_id",
+            "columnName": "assunto_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_pergunta_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_pergunta_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_pergunta_assunto_id",
+            "unique": false,
+            "columnNames": [
+              "assunto_id"
+            ],
+            "createSql": "CREATE  INDEX `index_pergunta_assunto_id` ON `${TABLE_NAME}` (`assunto_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "assunto",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "assunto_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
         "tableName": "usuario",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT NOT NULL, `progresso` INTEGER NOT NULL)",
         "fields": [
@@ -156,7 +241,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5c6a0903cba1574fd34fcfa1f4b77a50\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"15029ad94c6b004bb09d4b5b9c142f51\")"
     ]
   }
 }
