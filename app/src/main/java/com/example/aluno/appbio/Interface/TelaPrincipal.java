@@ -51,11 +51,22 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        Log.i("POPULAR BANCO", "Chamando função");
         popularBanco();
     }
 
     private void popularBanco() {
-        new PopularBanco().execute(TelaPrincipal.this);
+        boolean res = false;
+
+        try {
+            res = new TesteBanco().execute().get();
+        } catch (Exception e) {
+            Log.e("ERRO TESTE", e.getMessage());
+        }
+
+        if (!res) {
+            new PopularBanco().execute(TelaPrincipal.this);
+        }
     }
 
     @OnClick(R.id.btnModoEstudo)
@@ -117,12 +128,27 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         ProgressDialog progressDialog;
 
         @Override
+        protected void onPreExecute() {
+            progressDialog = new ProgressDialog(TelaPrincipal.this);
+            progressDialog.setMessage("Iniciando banco de dados!");
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+            progressDialog.setMax(100);
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+        }
+
+        @Override
         protected Void doInBackground(Context... contexts) {
             try {
+                Log.i("POPULAR BANCO", "Salvando assuntos");
                 List<Assunto> assuntos = AssuntoRepository.populaBanco(TelaPrincipal.this);
 
+                progressDialog.setProgress(10);
+
                 for (Assunto a : assuntos) {
+                    Log.i("POPULAR BANCO", "SALVANDO" + a.getNome());
                     ConteudoRepository.populaBanco(a, TelaPrincipal.this);
+                    progressDialog.setProgress(progressDialog.getProgress() * 2);
                 }
 
             } catch (Exception e) {
@@ -132,19 +158,32 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
                 cancel(true);
             }
 
-            return null;        }
-
-        @Override
-        protected void onPreExecute() {
-            progressDialog = new ProgressDialog(TelaPrincipal.this);
-            progressDialog.setMessage("Iniciando banco de dados!");
-            progressDialog.setCancelable(false);
-            progressDialog.show();
+            return null;
         }
+
 
         @Override
         protected void onPostExecute(Void aVoid) {
             progressDialog.dismiss();
         }
     }
+
+
+    private class TesteBanco extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            try {
+                if (AssuntoRepository.getAll(TelaPrincipal.this) != null) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } catch (Exception e) {
+                Log.i("ERRO CONSUL ASSUNTO", e.getMessage());
+                return false;
+            }
+        }
+    }
+
 }

@@ -21,4 +21,14 @@ public class AssuntoRepository {
         }
     }
 
+    public static List<Assunto> getAll(Context context){
+        try{
+            return AppDatabase.getAppDatabase(context).assuntoDao().getAll();
+        }catch (Exception e){
+            Log.e("ERRO CONSUL ASSUNTO", e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }
