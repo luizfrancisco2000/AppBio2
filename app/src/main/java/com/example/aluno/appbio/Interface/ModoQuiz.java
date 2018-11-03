@@ -1,17 +1,14 @@
 package com.example.aluno.appbio.Interface;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,16 +26,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ModoQuiz extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.drawerLayout)
-    DrawerLayout layout;
-
-    @BindView(R.id.navView)
-    NavigationView navigationView;
+public class ModoQuiz extends AppCompatActivity {
 
     @BindView(R.id.text_view_pontos)
     TextView txtPontos;
@@ -79,30 +67,35 @@ public class ModoQuiz extends AppCompatActivity implements NavigationView.OnNavi
     private int pontos;
     private boolean respondido;
 
+    private long assuntoId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_quiz);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, layout, toolbar, R.string.abrir_menu, R.string.fechar_menu);
-        layout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-
         textColorDefaultRb = rb1.getTextColors();
 
+
         try {
-            perguntaList = new GetPerguntas().execute().get();
+            Intent intent = getIntent();
+            assuntoId = intent.getLongExtra("assuntoId", 0);
+            totalPerguntas = intent.getIntExtra("numPerguntas", 0);
+        } catch (Exception e) {
+            Toast.makeText(this, "Houve um erro ao inicializar o quiz!", Toast.LENGTH_SHORT).show();
+            Log.e("ERRO INTENT", e.getMessage());
+            e.printStackTrace();
+            finish();
+        }
+
+        try {
+            perguntaList = new GetPerguntas().execute(assuntoId).get();
         } catch (Exception e) {
             Toast.makeText(this, "Houve um erro ao buscar as perguntas!", Toast.LENGTH_LONG).show();
             finish();
         }
 
-        totalPerguntas = perguntaList.size();
         Collections.shuffle(perguntaList);
 
         proximaPergunta();
@@ -182,65 +175,36 @@ public class ModoQuiz extends AppCompatActivity implements NavigationView.OnNavi
                 break;
         }
 
-        if(contadorPerguntas < totalPerguntas){
+        if (contadorPerguntas < totalPerguntas) {
             button.setText("Próxima");
-        }else{
+        } else {
             button.setText("Finalizar");
         }
     }
 
     private void finalizarQuiz() {
+        try {
+            SharedPreferences preferences = getSharedPreferences("usuario", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("resultadoQuiz", pontos);
+            editor.apply();
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Erro ao salvar a pontuação!", Toast.LENGTH_LONG).show();
+            Log.e("ERRO PONTOS", e.getMessage());
+            e.printStackTrace();
+        }
+
         finish();
     }
 
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_item_inicio: {
-                Toast.makeText(this, R.string.inicio, Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_item_conteudo_programatico: {
-                Toast.makeText(this, R.string.conteudo_programatico, Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_item_configuracoes: {
-                Toast.makeText(this, "Configurações", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_item_ajuda: {
-                Toast.makeText(this, "Ajuda", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            case R.id.nav_item_legal: {
-                Toast.makeText(this, "Legal", Toast.LENGTH_SHORT).show();
-                break;
-            }
-            default: {
-                Toast.makeText(this, "Menu Default", Toast.LENGTH_SHORT).show();
-                break;
-            }
-        }
-        layout.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (layout.isDrawerOpen(GravityCompat.START)) {
-            layout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    private class GetPerguntas extends AsyncTask<Void, Void, List<Pergunta>> {
+    private class GetPerguntas extends AsyncTask<Long, Void, List<Pergunta>> {
 
         @Override
-        protected List<Pergunta> doInBackground(Void... voids) {
+        protected List<Pergunta> doInBackground(Long... longs) {
             try {
-                return PerguntaRepository.listar(ModoQuiz.this);
+                return PerguntaRepository.listarPorAssunto(ModoQuiz.this, longs[0]);
             } catch (Exception e) {
                 return null;
             }

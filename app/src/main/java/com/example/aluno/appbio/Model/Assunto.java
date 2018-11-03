@@ -44,10 +44,7 @@ public class Assunto implements Serializable {
 
     @Override
     public String toString() {
-        return "Assunto{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
+        return nome;
     }
 
     public static Assunto[] popularBanco() {

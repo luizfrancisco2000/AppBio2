@@ -21,4 +21,10 @@
     <string name="tempo">00:30</string>
     <string name="confirmar">Confirmar</string>
     <string name="proxima">Próxima</string>
+    <string name="lbl_titulo">Opções do Quiz</string>
+    <string name="lbl_num_perguntas">Número de perguntas:</string>
+    <string name="lbl_btn_iniciar">Iniciar Quiz</string>
+    <string name="lbl_assunto">Assunto:</string>
+    <string name="lbl_ultimo_resultado">Pontos do último quiz:</string>
+
 </resources>

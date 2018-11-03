@@ -38,4 +38,14 @@ public class PerguntaRepository {
             return null;
         }
     }
+
+    public static int contarPerguntasPorAssunto(long assunto_id, Context context) {
+        try {
+            return AppDatabase.getAppDatabase(context).perguntaDao().contarPorAssuntoId(assunto_id);
+        } catch (Exception e) {
+            Log.e("ERRO LISTAR PERGUNTAS", e.getMessage());
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

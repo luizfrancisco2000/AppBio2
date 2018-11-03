@@ -40,22 +40,19 @@
         <activity
             android:name=".Interface.ModoQuiz"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Interface.ConteudoProgramatico"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Interface.Configuracoes"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Interface.Ajuda"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Interface.Legal"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Interface.ConfiguraModoQuiz"></activity>
     </application>
 
 </manifest>

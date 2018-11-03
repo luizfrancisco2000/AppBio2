@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
@@ -8,94 +7,83 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:padding="20dp">
 
-        <include layout="@layout/toolbar" />
+        <TextView
+            android:id="@+id/text_view_pontos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pontuacao_inicial"
+            android:textAppearance="@style/AppTheme.lbl_black"
+            android:textColor="@color/preto" />
 
-        <!-- Componentes aqui -->
-        <RelativeLayout
+        <TextView
+            android:id="@+id/text_view_num_perguntas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_view_pontos"
+            android:text="@string/perguntas"
+            android:textAppearance="@style/AppTheme.lbl_black"
+            android:textColor="@color/preto" />
+
+        <TextView
+            android:id="@+id/text_view_tempo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/tempo"
+            android:textAppearance="@style/AppTheme.h1_black"
+            android:textColor="@color/preto" />
+
+        <TextView
+            android:id="@+id/txt_pergunta"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="16dp">
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/group_respostas"
+            android:layout_marginBottom="16dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/AppTheme.txt" />
 
-            <TextView
-                android:id="@+id/text_view_pontos"
+        <RadioGroup
+            android:id="@+id/group_respostas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <RadioButton
+                android:id="@+id/op1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pontuacao_inicial"
-                android:textColor="@color/preto" />
+                android:textAppearance="@style/AppTheme.txt" />
 
-            <TextView
-                android:id="@+id/text_view_num_perguntas"
+            <RadioButton
+                android:id="@+id/op2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_view_pontos"
-                android:text="@string/perguntas"
-                android:textColor="@color/preto" />
+                android:textAppearance="@style/AppTheme.txt" />
 
-            <TextView
-                android:id="@+id/text_view_tempo"
+            <RadioButton
+                android:id="@+id/op3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:text="@string/tempo"
-                android:textColor="@color/preto"
-                android:textSize="40sp" />
+                android:textAppearance="@style/AppTheme.txt" />
 
-            <TextView
-                android:id="@+id/txt_pergunta"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/group_respostas"
-                android:layout_marginBottom="16dp"
-                android:textAlignment="center"
-                android:textColor="@color/preto"
-                android:textSize="20sp" />
+        </RadioGroup>
 
-            <RadioGroup
-                android:id="@+id/group_respostas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true">
-
-                <RadioButton
-                    android:id="@+id/op1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <RadioButton
-                    android:id="@+id/op2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <RadioButton
-                    android:id="@+id/op3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/btn_confirmar_proximo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/group_respostas"
-                android:layout_marginTop="16dp"
-                android:text="@string/confirmar" />
-        </RelativeLayout>
+        <Button
+            android:id="@+id/btn_confirmar_proximo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/group_respostas"
+            android:layout_marginTop="20dp"
+            android:text="@string/confirmar"
+            android:textAppearance="@style/AppTheme.lbl_black" />
+    </RelativeLayout>
 
 
-    </LinearLayout>
+</LinearLayout>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/menu_nav" />
-</android.support.v4.widget.DrawerLayout>

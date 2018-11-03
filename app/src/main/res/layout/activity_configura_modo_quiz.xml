@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".Interface.ConfiguraModoQuiz">
+
+    <TextView
+        android:id="@+id/lblTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/lbl_titulo"
+        android:textAppearance="@style/AppTheme.h1_black" />
+
+    <TextView
+        android:id="@+id/lblMaterias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/lbl_assunto"
+        android:textAppearance="@style/AppTheme.lbl_black" />
+
+    <Spinner
+        android:id="@+id/spin_assuntos"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAppearance="@style/AppTheme.txt"></Spinner>
+
+    <TextView
+        android:id="@+id/lblNumPerguntas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/lbl_num_perguntas"
+        android:textAppearance="@style/AppTheme.lbl_black" />
+
+    <Spinner
+        android:id="@+id/spin_num_perguntas"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:textAppearance="@style/AppTheme.txt">
+
+    </Spinner>
+
+    <TextView
+        android:id="@+id/lblResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:text="@string/lbl_ultimo_resultado"
+        android:textAppearance="@style/AppTheme.lbl_black" />
+
+    <Button
+        android:id="@+id/btn_iniciar_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/lbl_btn_iniciar"
+        android:textAppearance="@style/AppTheme.lbl_black" />
+
+</LinearLayout>

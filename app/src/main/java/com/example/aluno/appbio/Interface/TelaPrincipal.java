@@ -52,7 +52,7 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        Log.i("POPULAR BANCO", "Chamando função");
+        Log.e("POPULAR BANCO", "Chamando função");
         popularBanco();
     }
 
@@ -64,9 +64,9 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         } catch (Exception e) {
             Log.e("ERRO TESTE", e.getMessage());
         }
-        Log.i("TESTE BANCO", "" + res);
+
         if (res) {
-            Log.i("TESTE BANCO", "POPULANDO BANCO");
+            Log.e("TESTE BANCO", "POPULANDO BANCO");
             new PopularBanco().execute(TelaPrincipal.this);
         }
     }
@@ -79,7 +79,7 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
     @OnClick(R.id.btnModoQuiz)
     public void modoQuiz() {
-        Intent i = new Intent(this, ModoQuiz.class);
+        Intent i = new Intent(this, ConfiguraModoQuiz.class);
         startActivity(i);
     }
 
@@ -142,18 +142,18 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         @Override
         protected Void doInBackground(Context... contexts) {
             try {
-                Log.i("POPULAR BANCO", "Salvando assuntos");
+                Log.e("POPULAR BANCO", "Salvando assuntos");
                 List<Assunto> assuntos = AssuntoRepository.populaBanco(TelaPrincipal.this);
                 progressDialog.setProgress(10);
                 for (Assunto a : assuntos) {
-                    Log.i("POPULAR BANCO", "SALVANDO " + a.getNome() + " id: " + a.getId());
+                    Log.e("POPULAR BANCO", "SALVANDO " + a.getNome() + " id: " + a.getId());
                     ConteudoRepository.populaBanco(a, TelaPrincipal.this);
                     progressDialog.setProgress(progressDialog.getProgress() * 2);
                 }
                 PerguntaRepository.populaBanco(TelaPrincipal.this);
                 progressDialog.setProgress(100);
             } catch (Exception e) {
-                Log.i("ERRO NO CADASTRO", e.getMessage());
+                Log.e("ERRO NO CADASTRO", e.getMessage());
                 progressDialog.dismiss();
                 cancel(true);
             }
@@ -171,15 +171,15 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         protected Boolean doInBackground(Void... voids) {
             try {
                 List<Assunto> assuntos = AssuntoRepository.getAll(TelaPrincipal.this);
-                if (assuntos == null) {
+                if (assuntos.size() > 0) {
+                    return false;
+                } else {
                     Log.e("ASSUNTO TESTE NULL", "" + assuntos.size());
                     return true;
-                } else {
-                    return false;
                 }
             } catch (Exception e) {
                 Log.e("ERRO TESTE BANCO", e.getMessage());
-                return false;
+                return true;
             }
         }
     }

@@ -21,4 +21,7 @@ public interface PerguntaDao {
     @Query("SELECT * FROM pergunta WHERE assunto_id = :id")
     List<Pergunta> getByAssuntoId(long id);
 
+    @Query("SELECT COUNT(id) FROM pergunta WHERE assunto_id = :id")
+    int contarPorAssuntoId(long id);
+
 }

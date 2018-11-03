@@ -8,14 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.lbl_black">
+    <style name="AppTheme.h1_black">
         <item name="android:textColor">@color/preto</item>
-        <item name="android:textSize">22dp</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">@font/cabin_bold</item>
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
-    <style name="AppTheme.sub_lbl_black">
+    <style name="AppTheme.lbl_black">
         <item name="android:textColor">@color/preto</item>
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/cabin_bold</item>
+    </style>
+
+    <style name="AppTheme.txt">
+        <item name="android:textColor">@color/preto</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/cabin</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
