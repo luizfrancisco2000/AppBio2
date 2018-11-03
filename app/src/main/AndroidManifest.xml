@@ -34,9 +34,7 @@
         <activity
             android:name=".Interface.TelaPrincipal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Interface.ModoEstudo"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Interface.ModoEstudo" />
         <activity
             android:name=".Interface.ModoQuiz"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -52,7 +50,8 @@
         <activity
             android:name=".Interface.Legal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Interface.ConfiguraModoQuiz"></activity>
+        <activity android:name=".Interface.ConfiguraModoQuiz" />
+        <activity android:name=".Interface.MostrarConteudo"></activity>
     </application>
 
 </manifest>

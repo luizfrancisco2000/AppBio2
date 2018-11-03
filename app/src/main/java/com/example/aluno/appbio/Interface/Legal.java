@@ -34,6 +34,8 @@ public class Legal extends AppCompatActivity implements NavigationView.OnNavigat
 
         ButterKnife.bind(this);
 
+        toolbar.setBackgroundColor(getResources().getColor(R.color.verde_ifam));
+
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, layout, toolbar, R.string.abrir_menu, R.string.fechar_menu);

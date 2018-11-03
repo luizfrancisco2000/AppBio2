@@ -44,6 +44,8 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_tela_principal);
         ButterKnife.bind(this);
 
+        toolbar.setBackgroundColor(getResources().getColor(R.color.verde_ifam));
+
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, layout, toolbar, R.string.abrir_menu, R.string.fechar_menu);

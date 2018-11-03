@@ -33,6 +33,7 @@ public class Ajuda extends AppCompatActivity implements NavigationView.OnNavigat
         setContentView(R.layout.activity_ajuda);
 
         ButterKnife.bind(this);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.verde_ifam));
 
         setSupportActionBar(toolbar);
 

@@ -1,31 +1,42 @@
 package com.example.aluno.appbio.Interface;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.aluno.appbio.Adapter.AssuntoListAdapter;
+import com.example.aluno.appbio.Adapter.ConteudoListAdapter;
+import com.example.aluno.appbio.Model.Assunto;
+import com.example.aluno.appbio.Model.Conteudo;
 import com.example.aluno.appbio.R;
+import com.example.aluno.appbio.Repository.AssuntoRepository;
+import com.example.aluno.appbio.Repository.ConteudoRepository;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
-public class ModoEstudo extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ModoEstudo extends AppCompatActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    @BindView(R.id.list_assuntos)
+    public ListView listViewAssuntos;
 
-    @BindView(R.id.drawerLayout)
-    DrawerLayout layout;
+    @BindView(R.id.list_conteudos)
+    public ListView listViewConteudos;
 
-    @BindView(R.id.navView)
-    NavigationView navigationView;
+    private List<Assunto> assuntos;
+    private List<Conteudo> conteudos;
+
+    private List<Conteudo> conteudosFiltrados;
+
+    private boolean assuntoSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,57 +45,98 @@ public class ModoEstudo extends AppCompatActivity implements NavigationView.OnNa
 
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.modo_estudo);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, layout, toolbar, R.string.abrir_menu, R.string.fechar_menu);
-        layout.addDrawerListener(toggle);
-        toggle.syncState();
+        try {
+            assuntos = new ProcurarAssuntos().execute().get();
+        } catch (Exception e) {
+            Toast.makeText(this, "Houve um erro ao buscar os assuntos!", Toast.LENGTH_SHORT).show();
+            Log.e("ERRO ASSUNTOS", e.getMessage());
+            e.printStackTrace();
+            finish();
+        }
 
-        navigationView.setNavigationItemSelectedListener(this);
+        if (assuntos == null) {
+            Toast.makeText(this, "Nenhum assunto encontrado!", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            AssuntoListAdapter adapter = new AssuntoListAdapter(this, this, assuntos);
+            listViewAssuntos.setAdapter(adapter);
+        }
+
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_item_inicio: {
-                Intent i = new Intent(this, TelaPrincipal.class);
-                startActivity(i);
-                break;
-            }
-            case R.id.nav_item_conteudo_programatico: {
-                Intent i = new Intent(this, ConteudoProgramatico.class);
-                startActivity(i);
-                break;
-            }
-            case R.id.nav_item_configuracoes: {
-                Intent i = new Intent(this, Configuracoes.class);
-                startActivity(i);
-                break;
-            }
-            case R.id.nav_item_ajuda: {
-                Intent i = new Intent(this, Ajuda.class);
-                startActivity(i);
-                break;
-            }
-            case R.id.nav_item_legal: {
-                Intent i = new Intent(this, Legal.class);
-                startActivity(i);
-                break;
-            }
-            default: {
-                break;
-            }
+
+    @OnItemClick(R.id.list_conteudos)
+    public void mostrarConteudo(int position) {
+        Assunto assunto = assuntos.get(listViewAssuntos.getSelectedItemPosition() + 1);
+
+        Intent intent = new Intent(this, MostrarConteudo.class);
+        intent.putExtra("conteudoPosicao", position);
+        intent.putExtra("assunto", assunto);
+        startActivity(intent);
+    }
+
+
+    @OnItemClick(R.id.list_assuntos)
+    public void listarPorAssuntoSelecionado(int position) {
+        listViewConteudos.setVisibility(View.VISIBLE);
+        listViewAssuntos.setVisibility(View.GONE);
+
+        assuntoSelecionado = true;
+        Assunto a = assuntos.get(position);
+        try {
+            conteudos = new ProcurarConteudos().execute(a.getId()).get();
+        } catch (Exception e) {
+            Toast.makeText(this, "Houve um erro ao buscar os conteudos!", Toast.LENGTH_SHORT).show();
+            Log.e("ERRO CONTEUDOS", e.getMessage());
+            e.printStackTrace();
+            finish();
         }
-        layout.closeDrawer(GravityCompat.START);
-        return true;
+
+        if (conteudos == null) {
+            Toast.makeText(this, "Nenhum conteudo encontrado!", Toast.LENGTH_SHORT).show();
+        } else {
+            ConteudoListAdapter adapter = new ConteudoListAdapter(this, this, conteudos);
+            listViewConteudos.setAdapter(adapter);
+        }
     }
 
     @Override
     public void onBackPressed() {
-        if (layout.isDrawerOpen(GravityCompat.START)) {
-            layout.closeDrawer(GravityCompat.START);
+        if (assuntoSelecionado) {
+            listViewConteudos.setVisibility(View.GONE);
+            listViewAssuntos.setVisibility(View.VISIBLE);
+            assuntoSelecionado = false;
         } else {
-            super.onBackPressed();
+            finish();
+        }
+    }
+
+    private class ProcurarAssuntos extends AsyncTask<Void, Void, List<Assunto>> {
+        @Override
+        protected List<Assunto> doInBackground(Void... voids) {
+            try {
+                return AssuntoRepository.getAll(ModoEstudo.this);
+            } catch (Exception e) {
+                Log.e("ERRO ASYNC ASSUNTOS", e.getMessage());
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
+    private class ProcurarConteudos extends AsyncTask<Long, Void, List<Conteudo>> {
+
+        @Override
+        protected List<Conteudo> doInBackground(Long... longs) {
+            try {
+                return ConteudoRepository.listarPorAssunto(longs[0], ModoEstudo.this);
+            } catch (Exception e) {
+                Log.e("ERRO ASYNC CONTEUDOS", e.getMessage());
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 }

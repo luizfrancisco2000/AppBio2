@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">HistoQuiz</string>
     <string name="description_logo">App logo</string>
-    <string name="victor">Victor de Castro Farias</string>
-    <string name="reully">Reully Mary</string>
-    <string name="silvia">Silvia Celina</string>
     <string name="description_ifam">Logo IFAM</string>
     <string name="abrir_menu">Abrir</string>
     <string name="fechar_menu">Fechar</string>
@@ -26,5 +23,18 @@
     <string name="lbl_btn_iniciar">Iniciar Quiz</string>
     <string name="lbl_assunto">Assunto:</string>
     <string name="lbl_ultimo_resultado">Pontos do último quiz:</string>
+    <string name="hint_filtro">Procurar por conceito</string>
+    <string name="lbl_btn_anterior">Anterior</string>
+    <string name="lbl_btn_proximo">Próximo</string>
 
+
+    <string name="alunos">Alunos</string>
+    <string name="victor">Victor de Castro Farias</string>
+    <string name="reully">Reully Mary</string>
+    <string name="silvia">Silvia Celina</string>
+    <string name="professora">Professora/Orientadora</string>
+    <string name="professora_nome">Letícia de Oliveira Rosa</string>
+    <string name="desenvolvedor">Desenvolvedor</string>
+    <string name="ano">2018</string>
+    <string name="desenvolvedor_nome">Igor Carvalho Costa</string>
 </resources>
