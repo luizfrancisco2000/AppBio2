@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/verde</item>
-        <item name="colorPrimaryDark">@color/verde_ifam</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorPrimary">@color/limao</item>
+        <item name="colorPrimaryDark">@color/preto</item>
+        <item name="colorAccent">@color/verde_ifam</item>
         <item name="android:actionBarStyle">@style/MyActionBar</item>
     </style>
 

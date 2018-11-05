@@ -33,7 +33,6 @@ public class Ajuda extends AppCompatActivity implements NavigationView.OnNavigat
         setContentView(R.layout.activity_ajuda);
 
         ButterKnife.bind(this);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.verde_ifam));
 
         setSupportActionBar(toolbar);
 
@@ -50,16 +49,19 @@ public class Ajuda extends AppCompatActivity implements NavigationView.OnNavigat
             case R.id.nav_item_inicio: {
                 Intent i = new Intent(this, TelaPrincipal.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_conteudo_programatico: {
                 Intent i = new Intent(this, ConteudoProgramatico.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_configuracoes: {
                 Intent i = new Intent(this, Configuracoes.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_ajuda: {
@@ -68,6 +70,7 @@ public class Ajuda extends AppCompatActivity implements NavigationView.OnNavigat
             case R.id.nav_item_legal: {
                 Intent i = new Intent(this, Legal.class);
                 startActivity(i);
+                finish();
                 break;
             }
             default: {

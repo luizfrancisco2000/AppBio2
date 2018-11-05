@@ -1,6 +1,5 @@
-package com.example.aluno.appbio.Interface;
+package com.example.aluno.appbio.Interface.ModoQuiz;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -25,7 +24,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
-public class ConfiguraModoQuiz extends AppCompatActivity {
+public class ConfigurarModoQuiz extends AppCompatActivity {
 
     @BindView(R.id.spin_assuntos)
     public Spinner spinAssuntos;
@@ -37,6 +36,11 @@ public class ConfiguraModoQuiz extends AppCompatActivity {
     public TextView txtResultado;
 
     private List<Assunto> assuntos;
+
+    private static final int REQUEST_CODE_QUIZ = 1;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String KEY_PONTUACAO = "keyPontuacao";
+    private int maiorPontuacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,25 +64,8 @@ public class ConfiguraModoQuiz extends AppCompatActivity {
             e.printStackTrace();
             finish();
         }
-    }
 
-    @Override
-    protected void onResume() {
-        try {
-            SharedPreferences sharedPreferences = getSharedPreferences("usuario", Context.MODE_PRIVATE);
-
-            int pontos = sharedPreferences.getInt("resultadoQuiz", 0);
-
-            String res = getResources().getString(R.string.lbl_ultimo_resultado);
-
-            txtResultado.setText(res + " " + pontos);
-        } catch (Exception e) {
-            Toast.makeText(this, "Erro ao mostrar pontos!", Toast.LENGTH_LONG).show();
-            Log.e("ERRO PONTOS", e.getMessage());
-            e.printStackTrace();
-        }
-
-        super.onResume();
+        carregarPontuacao();
     }
 
     @OnItemSelected(R.id.spin_assuntos)
@@ -107,7 +94,6 @@ public class ConfiguraModoQuiz extends AppCompatActivity {
         spinNumPerguntas.setAdapter(adapter);
     }
 
-
     @OnClick(R.id.btn_iniciar_quiz)
     public void iniciarQuiz() {
 
@@ -120,12 +106,25 @@ public class ConfiguraModoQuiz extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregarPontuacao();
+    }
+
+    private void carregarPontuacao() {
+        SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        maiorPontuacao = preferences.getInt(KEY_PONTUACAO, 0);
+        txtResultado.setText("Maior pontuação: " + maiorPontuacao);
+    }
+
+
     private class BuscarAssuntos extends AsyncTask<Void, Void, List<Assunto>> {
 
         @Override
         protected List<Assunto> doInBackground(Void... voids) {
             try {
-                return AssuntoRepository.getAll(ConfiguraModoQuiz.this);
+                return AssuntoRepository.getAll(ConfigurarModoQuiz.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC ASSUNTOS", e.getMessage());
                 e.printStackTrace();
@@ -139,7 +138,7 @@ public class ConfiguraModoQuiz extends AppCompatActivity {
         @Override
         protected Integer doInBackground(Long... longs) {
             try {
-                return PerguntaRepository.contarPerguntasPorAssunto(longs[0], ConfiguraModoQuiz.this);
+                return PerguntaRepository.contarPerguntasPorAssunto(longs[0], ConfigurarModoQuiz.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC NUM PERG", e.getMessage());
                 e.printStackTrace();

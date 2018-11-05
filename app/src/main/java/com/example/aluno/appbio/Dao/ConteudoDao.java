@@ -24,4 +24,7 @@ public interface ConteudoDao {
 
     @Query("SELECT * FROM conteudo WHERE assunto_id = :assunto_id ORDER BY caracteristica ASC")
     List<Conteudo> getConteudosByAssuntoId(long assunto_id);
+
+    @Query("SELECT * FROM conteudo WHERE assunto_id = :assunto_id AND caracteristica LIKE :caracteristica ORDER BY caracteristica ASC")
+    List<Conteudo> getConteudosByAssuntoIdAndCaracteristica(long assunto_id, String caracteristica);
 }

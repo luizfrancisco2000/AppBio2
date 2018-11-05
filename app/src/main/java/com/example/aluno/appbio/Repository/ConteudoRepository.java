@@ -30,4 +30,15 @@ public class ConteudoRepository {
             return null;
         }
     }
+
+    public static List<Conteudo> listarPorAssuntoECaracTeristica(String caracteristica, long assunto_id, Context context) {
+        try {
+            String filtro = "%" + caracteristica + "%";
+            return AppDatabase.getAppDatabase(context).conteudoDao().getConteudosByAssuntoIdAndCaracteristica(assunto_id, filtro);
+        } catch (Exception e) {
+            Log.e("ERRO LISTAR ASSUNTO", e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

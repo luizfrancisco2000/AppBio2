@@ -15,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.aluno.appbio.Interface.ModoEstudo.MostrarAssuntos;
+import com.example.aluno.appbio.Interface.ModoQuiz.ConfigurarModoQuiz;
 import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
 import com.example.aluno.appbio.Repository.AssuntoRepository;
@@ -43,8 +45,6 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_principal);
         ButterKnife.bind(this);
-
-        toolbar.setBackgroundColor(getResources().getColor(R.color.verde_ifam));
 
         setSupportActionBar(toolbar);
 
@@ -75,13 +75,13 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
     @OnClick(R.id.btnModoEstudo)
     public void modoEstudo() {
-        Intent i = new Intent(this, ModoEstudo.class);
+        Intent i = new Intent(this, MostrarAssuntos.class);
         startActivity(i);
     }
 
     @OnClick(R.id.btnModoQuiz)
     public void modoQuiz() {
-        Intent i = new Intent(this, ConfiguraModoQuiz.class);
+        Intent i = new Intent(this, ConfigurarModoQuiz.class);
         startActivity(i);
     }
 
@@ -94,21 +94,25 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
             case R.id.nav_item_conteudo_programatico: {
                 Intent i = new Intent(this, ConteudoProgramatico.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_configuracoes: {
                 Intent i = new Intent(this, Configuracoes.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_ajuda: {
                 Intent i = new Intent(this, Ajuda.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_legal: {
                 Intent i = new Intent(this, Legal.class);
                 startActivity(i);
+                finish();
                 break;
             }
             default: {

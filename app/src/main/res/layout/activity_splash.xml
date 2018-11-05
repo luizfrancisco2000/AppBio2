@@ -4,43 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@drawable/logo_3"
     tools:context=".Interface.Splash">
 
-    <ImageView
+    <!--     android:background="@drawable/gradient_background" -->
+
+    <!--<ImageView
         android:id="@+id/img_logo_app"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="150dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
         android:contentDescription="@string/description_logo"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/logo_2_transparente"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+-->
 
-    <TextView
-        android:id="@+id/lbl_app_nome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/app_name"
-        android:textAppearance="@style/AppTheme.lbl_black"
-        app:layout_constraintEnd_toEndOf="@+id/img_logo_app"
-        app:layout_constraintStart_toStartOf="@+id/img_logo_app"
-        app:layout_constraintTop_toBottomOf="@+id/img_logo_app" />
-
-    <ImageView
+    <!--<ImageView
         android:id="@+id/img_logo_ifam"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/description_ifam"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/lbl_app_nome"
-        app:layout_constraintStart_toStartOf="@+id/lbl_app_nome"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_app_nome"
-        app:layout_constraintVertical_bias="0.979"
-        app:srcCompat="@drawable/logo_ifam" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo_ifam" />-->
 
 
 </android.support.constraint.ConstraintLayout>

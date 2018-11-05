@@ -31,4 +31,15 @@ public class AssuntoRepository {
         }
     }
 
+    public static List<Assunto> pesquisa(String filtro, Context context){
+        try{
+            String pesquisa = "%" + filtro + "%";
+            return AppDatabase.getAppDatabase(context).assuntoDao().getByFiltro(pesquisa);
+        }catch (Exception e){
+            Log.e("ERRO CONSUL ASSUNTO", e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

@@ -34,8 +34,6 @@ public class ConteudoProgramatico extends AppCompatActivity implements Navigatio
 
         ButterKnife.bind(this);
 
-        toolbar.setBackgroundColor(getResources().getColor(R.color.verde_ifam));
-
         setSupportActionBar(toolbar);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, layout, toolbar, R.string.abrir_menu, R.string.fechar_menu);
@@ -51,6 +49,7 @@ public class ConteudoProgramatico extends AppCompatActivity implements Navigatio
             case R.id.nav_item_inicio: {
                 Intent i = new Intent(this, TelaPrincipal.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_conteudo_programatico: {
@@ -59,16 +58,19 @@ public class ConteudoProgramatico extends AppCompatActivity implements Navigatio
             case R.id.nav_item_configuracoes: {
                 Intent i = new Intent(this, Configuracoes.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_ajuda: {
                 Intent i = new Intent(this, Ajuda.class);
                 startActivity(i);
+                finish();
                 break;
             }
             case R.id.nav_item_legal: {
                 Intent i = new Intent(this, Legal.class);
                 startActivity(i);
+                finish();
                 break;
             }
             default: {

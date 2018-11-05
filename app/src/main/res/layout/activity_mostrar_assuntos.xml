@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:openDrawer="start">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_filtro_assunto"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:hint="@string/hint_filtro_assunto"
+            android:inputType=""
+            tools:targetApi="o" />
+
+        <ImageView
+            android:id="@+id/img_pesquisa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/ic_pesquisa" />
+
+    </TableRow>
+
+    <ListView
+        android:id="@+id/list_assuntos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+
+</LinearLayout>

@@ -8,6 +8,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:padding="15dp"
+    tools:context=".Interface.ModoEstudo.MostrarConteudos"
     tools:openDrawer="start">
 
     <TableRow
@@ -15,11 +16,11 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/txt_filtro"
+            android:id="@+id/txt_filtro_conteudo"
             android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:autofillHints=""
-            android:hint="@string/hint_filtro"
+            android:hint="@string/hint_filtro_conteudo"
             android:inputType=""
             tools:targetApi="o" />
 
@@ -31,10 +32,6 @@
 
     </TableRow>
 
-    <ListView
-        android:id="@+id/list_assuntos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
 
     <ListView
         android:id="@+id/list_conteudos"

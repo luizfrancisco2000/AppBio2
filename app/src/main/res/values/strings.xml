@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HistoQuiz</string>
+    <string name="app_name">Histo</string>
     <string name="description_logo">App logo</string>
     <string name="description_ifam">Logo IFAM</string>
     <string name="abrir_menu">Abrir</string>
@@ -23,7 +23,8 @@
     <string name="lbl_btn_iniciar">Iniciar Quiz</string>
     <string name="lbl_assunto">Assunto:</string>
     <string name="lbl_ultimo_resultado">Pontos do último quiz:</string>
-    <string name="hint_filtro">Procurar por conceito</string>
+    <string name="hint_filtro_conteudo">Procurar por conceito</string>
+    <string name="hint_filtro_assunto">Procurar por assunto</string>
     <string name="lbl_btn_anterior">Anterior</string>
     <string name="lbl_btn_proximo">Próximo</string>
 

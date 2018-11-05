@@ -1,4 +1,4 @@
-package com.example.aluno.appbio.Interface;
+package com.example.aluno.appbio.Interface.ModoEstudo;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,7 +20,7 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MostrarConteudo extends AppCompatActivity {
+public class ConteudoSelecionado extends AppCompatActivity {
 
     @BindView(R.id.lbl_caracteristica)
     public TextView lblCaracteristica;
@@ -38,19 +38,26 @@ public class MostrarConteudo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_conteudo);
+        setContentView(R.layout.activity_conteudo_selecionado);
+
+        long conteudo_id = 0;
 
         try {
             Intent intent = getIntent();
-            posicaoConteudo = intent.getIntExtra("conteudoPosicao", 0);
             assunto = (Assunto) intent.getSerializableExtra("assunto");
-
+            conteudo_id = intent.getLongExtra("conteudo", 0);
             conteudos = new ProcurarConteudos().execute(assunto.getId()).get();
         } catch (Exception e) {
             Toast.makeText(this, "Não foi possível mostrar o conteúdo selecionado!", Toast.LENGTH_LONG).show();
             Log.e("ERRO INTENT", e.getMessage());
             e.printStackTrace();
             finish();
+        }
+
+        for (int i = 0; i < conteudos.size(); i++) {
+            if (conteudos.get(i).getId() == conteudo_id) {
+                posicaoConteudo = i;
+            }
         }
 
         ButterKnife.bind(this);
@@ -64,17 +71,25 @@ public class MostrarConteudo extends AppCompatActivity {
 
         String[] conceitos = conteudo.getConceito().split(",");
 
-        for (int i = 0; i < conceitos.length; i++) {
-            lblConceitos.get(i).setText(conceitos[i]);
-        }
+        int length = conceitos.length;
 
-        if (conceitos.length == 1){
-            lblConceitos.get(1).setText("");
-            lblConceitos.get(2).setText("");
-        }
-
-        if (conceitos.length == 2){
-            lblConceitos.get(2).setText("");
+        switch (length) {
+            case 1:
+                lblConceitos.get(0).setText(conceitos[0]);
+                lblConceitos.get(1).setText("");
+                lblConceitos.get(2).setText("");
+                break;
+            case 2:
+                lblConceitos.get(0).setText(conceitos[0]);
+                lblConceitos.get(1).setText(conceitos[1]);
+                lblConceitos.get(2).setText("");
+                break;
+            case 3:
+                lblConceitos.get(0).setText(conceitos[0]);
+                lblConceitos.get(1).setText(conceitos[1]);
+                lblConceitos.get(2).setText(conceitos[2]);
+            default:
+                break;
         }
 
         lblAssunto.setText(assunto.getNome());
@@ -109,7 +124,7 @@ public class MostrarConteudo extends AppCompatActivity {
         @Override
         protected List<Conteudo> doInBackground(Long... longs) {
             try {
-                return ConteudoRepository.listarPorAssunto(longs[0], MostrarConteudo.this);
+                return ConteudoRepository.listarPorAssunto(longs[0], ConteudoSelecionado.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC CONTEUDOS", e.getMessage());
                 e.printStackTrace();

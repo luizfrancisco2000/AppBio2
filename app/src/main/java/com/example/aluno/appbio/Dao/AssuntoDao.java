@@ -18,6 +18,10 @@ public interface AssuntoDao {
     @Query("SELECT * FROM assunto")
     List<Assunto> getAll();
 
+
+    @Query("SELECT * FROM assunto WHERE nome LIKE :filtro")
+    List<Assunto> getByFiltro(String filtro);
+
     @Query("SELECT * FROM assunto WHERE id = :id")
     Assunto getAssuntoById(long id);
 }

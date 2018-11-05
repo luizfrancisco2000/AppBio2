@@ -1,6 +1,5 @@
-package com.example.aluno.appbio.Interface;
+package com.example.aluno.appbio.Interface.ModoQuiz;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
@@ -26,48 +25,55 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.example.aluno.appbio.Interface.ModoQuiz.ConfigurarModoQuiz.KEY_PONTUACAO;
+import static com.example.aluno.appbio.Interface.ModoQuiz.ConfigurarModoQuiz.SHARED_PREFS;
+
 public class ModoQuiz extends AppCompatActivity {
 
     @BindView(R.id.text_view_pontos)
-    TextView txtPontos;
+    public TextView txtPontos;
 
     @BindView(R.id.text_view_num_perguntas)
-    TextView txtNumPerguntas;
+    public TextView txtNumPerguntas;
 
     @BindView(R.id.text_view_tempo)
-    TextView txtTempo;
+    public TextView txtTempo;
 
     @BindView(R.id.txt_pergunta)
-    TextView txtPergunta;
+    public TextView txtPergunta;
 
     @BindView(R.id.group_respostas)
-    RadioGroup groupRespostas;
+    public RadioGroup groupRespostas;
 
     @BindView(R.id.op1)
-    RadioButton rb1;
+    public RadioButton rb1;
 
     @BindView(R.id.op2)
-    RadioButton rb2;
+    public RadioButton rb2;
 
     @BindView(R.id.op3)
-    RadioButton rb3;
+    public RadioButton rb3;
 
     @BindView(R.id.btn_confirmar_proximo)
-    Button button;
+    public Button button;
 
     private ColorStateList textColorDefaultRb;
 
     private List<Pergunta> perguntaList;
 
     private int contadorPerguntas;
+
     private int totalPerguntas;
 
     private Pergunta perguntaAtual;
 
     private int pontos;
+
     private boolean respondido;
 
     private long assuntoId;
+
+    private long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,21 +189,28 @@ public class ModoQuiz extends AppCompatActivity {
     }
 
     private void finalizarQuiz() {
-        try {
-            SharedPreferences preferences = getSharedPreferences("usuario", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("resultadoQuiz", pontos);
-            editor.apply();
 
-        } catch (Exception e) {
-            Toast.makeText(this, "Erro ao salvar a pontuação!", Toast.LENGTH_LONG).show();
-            Log.e("ERRO PONTOS", e.getMessage());
-            e.printStackTrace();
+        SharedPreferences preferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        int maiorPontuacao = preferences.getInt(KEY_PONTUACAO, 0);
+
+        if (pontos > maiorPontuacao) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt(KEY_PONTUACAO, pontos);
+            editor.apply();
         }
 
         finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + 2000 > System.currentTimeMillis()) {
+            finalizarQuiz();
+        } else {
+            Toast.makeText(this, "Pressione novamente para voltar", Toast.LENGTH_SHORT).show();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 
     private class GetPerguntas extends AsyncTask<Long, Void, List<Pergunta>> {
 

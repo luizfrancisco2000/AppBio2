@@ -30,28 +30,45 @@
             </intent-filter>
         </activity>
 
-        <!-- tela principal -->
+        <!-- Tela principal -->
         <activity
             android:name=".Interface.TelaPrincipal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Interface.ModoEstudo" />
+        <activity android:name=".Interface.ModoEstudo.MostrarAssuntos" />
+
+        <!-- Modo Quiz -->
         <activity
-            android:name=".Interface.ModoQuiz"
+            android:name=".Interface.ModoQuiz.ModoQuiz"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- Conteudo Programático -->
         <activity
             android:name=".Interface.ConteudoProgramatico"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- Configurações como tamanho da fonte, cor, etc -->
         <activity
             android:name=".Interface.Configuracoes"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- Ajuda de como usar o aplicativo -->
         <activity
             android:name=".Interface.Ajuda"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- Informações adicionais sobre o app -->
         <activity
             android:name=".Interface.Legal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Interface.ConfiguraModoQuiz" />
-        <activity android:name=".Interface.MostrarConteudo"></activity>
+
+        <!-- Configurar o número de perguntas, assuntos, etc -->
+        <activity android:name=".Interface.ModoQuiz.ConfigurarModoQuiz" />
+
+        <!-- Mostrar na tela o conteudo que o usuário selecionou -->
+        <activity android:name=".Interface.ModoEstudo.ConteudoSelecionado" />
+
+        <!-- Listar todos os conteudos -->
+        <activity android:name=".Interface.ModoEstudo.MostrarConteudos"></activity>
     </application>
 
 </manifest>
