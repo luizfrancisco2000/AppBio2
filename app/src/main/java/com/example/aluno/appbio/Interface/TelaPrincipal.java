@@ -91,12 +91,6 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
             case R.id.nav_item_inicio: {
                 break;
             }
-            case R.id.nav_item_conteudo_programatico: {
-                Intent i = new Intent(this, ConteudoProgramatico.class);
-                startActivity(i);
-                finish();
-                break;
-            }
             case R.id.nav_item_configuracoes: {
                 Intent i = new Intent(this, Configuracoes.class);
                 startActivity(i);

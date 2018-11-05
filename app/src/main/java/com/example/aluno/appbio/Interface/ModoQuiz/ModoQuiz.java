@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -29,6 +30,9 @@ import static com.example.aluno.appbio.Interface.ModoQuiz.ConfigurarModoQuiz.KEY
 import static com.example.aluno.appbio.Interface.ModoQuiz.ConfigurarModoQuiz.SHARED_PREFS;
 
 public class ModoQuiz extends AppCompatActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @BindView(R.id.text_view_pontos)
     public TextView txtPontos;
@@ -80,6 +84,7 @@ public class ModoQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modo_quiz);
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
 
         textColorDefaultRb = rb1.getTextColors();
 

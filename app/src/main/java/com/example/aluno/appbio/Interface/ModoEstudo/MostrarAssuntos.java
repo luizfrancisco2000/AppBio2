@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +24,9 @@ import butterknife.OnTextChanged;
 
 public class MostrarAssuntos extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.list_assuntos)
     public ListView listViewAssuntos;
 
@@ -37,6 +41,8 @@ public class MostrarAssuntos extends AppCompatActivity {
         setContentView(R.layout.activity_mostrar_assuntos);
 
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         popularTela();
     }
@@ -82,7 +88,7 @@ public class MostrarAssuntos extends AppCompatActivity {
         @Override
         protected List<Assunto> doInBackground(Void... voids) {
             try {
-                return AssuntoRepository.getAll(MostrarAssuntos.this);
+                return AssuntoRepository.getAllAtivos(MostrarAssuntos.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC ASSUNTOS", e.getMessage());
                 e.printStackTrace();

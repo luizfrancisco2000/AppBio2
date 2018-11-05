@@ -1,89 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <RelativeLayout
+    <include
+        android:id="@+id/include3"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="20dp">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include3">
 
-        <TextView
-            android:id="@+id/text_view_pontos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pontuacao_inicial"
-            android:textAppearance="@style/AppTheme.lbl_black"
-            android:textColor="@color/preto" />
-
-        <TextView
-            android:id="@+id/text_view_num_perguntas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/text_view_pontos"
-            android:text="@string/perguntas"
-            android:textAppearance="@style/AppTheme.lbl_black"
-            android:textColor="@color/preto" />
-
-        <TextView
-            android:id="@+id/text_view_tempo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:text="@string/tempo"
-            android:textAppearance="@style/AppTheme.h1_black"
-            android:textColor="@color/preto" />
-
-        <TextView
-            android:id="@+id/txt_pergunta"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/group_respostas"
-            android:layout_marginBottom="16dp"
-            android:textAlignment="center"
-            android:textAppearance="@style/AppTheme.txt" />
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include3">
 
-        <RadioGroup
-            android:id="@+id/group_respostas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
-
-            <RadioButton
-                android:id="@+id/op1"
+            <TextView
+                android:id="@+id/text_view_pontos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/AppTheme.txt" />
+                android:text="@string/pontuacao_inicial"
+                android:textAppearance="@style/AppTheme.lbl_black"
+                android:textColor="@color/preto" />
 
-            <RadioButton
-                android:id="@+id/op2"
+            <TextView
+                android:id="@+id/text_view_num_perguntas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/AppTheme.txt" />
+                android:layout_below="@id/text_view_pontos"
+                android:text="@string/perguntas"
+                android:textAppearance="@style/AppTheme.lbl_black"
+                android:textColor="@color/preto" />
 
-            <RadioButton
-                android:id="@+id/op3"
+            <TextView
+                android:id="@+id/text_view_tempo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="@string/tempo"
+                android:textAppearance="@style/AppTheme.h1_black"
+                android:textColor="@color/preto" />
+
+            <TextView
+                android:id="@+id/txt_pergunta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/group_respostas"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="center"
                 android:textAppearance="@style/AppTheme.txt" />
 
-        </RadioGroup>
+            <RadioGroup
+                android:id="@+id/group_respostas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
 
-        <Button
-            android:id="@+id/btn_confirmar_proximo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/group_respostas"
-            android:layout_marginTop="20dp"
-            android:text="@string/confirmar"
-            android:textAppearance="@style/AppTheme.lbl_black" />
-    </RelativeLayout>
+                <RadioButton
+                    android:id="@+id/op1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/AppTheme.txt" />
+
+                <RadioButton
+                    android:id="@+id/op2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/AppTheme.txt" />
+
+                <RadioButton
+                    android:id="@+id/op3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/AppTheme.txt" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_confirmar_proximo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/group_respostas"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/formato_botao_verde"
+                android:text="@string/confirmar"
+                android:textAppearance="@style/AppTheme.lbl_black"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
 

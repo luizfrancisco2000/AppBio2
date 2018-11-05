@@ -15,9 +15,15 @@ public interface AssuntoDao {
     @Insert
     void salvarTodos(Assunto... assuntos);
 
+    @Update
+    void atualizaLista(List<Assunto> assuntos);
+
     @Query("SELECT * FROM assunto")
     List<Assunto> getAll();
 
+
+    @Query("SELECT * FROM assunto WHERE ativo = 1")
+    List<Assunto> getAllAtivos();
 
     @Query("SELECT * FROM assunto WHERE nome LIKE :filtro")
     List<Assunto> getByFiltro(String filtro);

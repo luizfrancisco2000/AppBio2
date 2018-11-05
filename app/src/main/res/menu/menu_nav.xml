@@ -5,10 +5,6 @@
             android:id="@+id/nav_item_inicio"
             android:icon="@drawable/ic_home"
             android:title="@string/inicio" />
-        <item
-            android:id="@+id/nav_item_conteudo_programatico"
-            android:icon="@android:drawable/ic_menu_today"
-            android:title="@string/conteudo_programatico" />
 
         <item
             android:id="@+id/nav_item_configuracoes"

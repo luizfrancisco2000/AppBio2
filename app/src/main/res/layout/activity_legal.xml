@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,118 +13,119 @@
 
         <include layout="@layout/toolbar" />
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp"
-            android:background="@drawable/gradient_background">
 
-            <TextView
-                android:id="@+id/lbl_alunos"
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
-                android:text="@string/alunos"
-                android:textAppearance="@style/AppTheme.h1_black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:padding="15dp">
 
-            <TextView
-                android:id="@+id/lbl_victor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
-                android:text="@string/victor"
-                android:textAppearance="@style/AppTheme.lbl_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_alunos"
-                app:layout_constraintStart_toStartOf="@+id/lbl_alunos"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_alunos" />
+                <TextView
+                    android:id="@+id/lbl_alunos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/alunos"
+                    android:textAppearance="@style/AppTheme.h1_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/lbl_reully"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/reully"
-                android:textAppearance="@style/AppTheme.lbl_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_victor"
-                app:layout_constraintStart_toStartOf="@+id/lbl_victor"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_victor" />
+                <TextView
+                    android:id="@+id/lbl_victor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/victor"
+                    android:textAppearance="@style/AppTheme.lbl_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_alunos"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_alunos"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_alunos" />
 
-            <TextView
-                android:id="@+id/lbl_silvia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/silvia"
-                android:textAppearance="@style/AppTheme.lbl_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_reully"
-                app:layout_constraintStart_toStartOf="@+id/lbl_reully"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_reully" />
+                <TextView
+                    android:id="@+id/lbl_reully"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/reully"
+                    android:textAppearance="@style/AppTheme.lbl_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_victor"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_victor"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_victor" />
+
+                <TextView
+                    android:id="@+id/lbl_silvia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/silvia"
+                    android:textAppearance="@style/AppTheme.lbl_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_reully"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_reully"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_reully" />
 
 
-            <TextView
-                android:id="@+id/lbl_professora"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="center_horizontal"
-                android:text="@string/professora"
-                android:textAppearance="@style/AppTheme.h1_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_silvia"
-                app:layout_constraintStart_toStartOf="@+id/lbl_silvia"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_silvia" />
+                <TextView
+                    android:id="@+id/lbl_professora"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/professora"
+                    android:textAppearance="@style/AppTheme.h1_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_silvia"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_silvia"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_silvia" />
 
-            <TextView
-                android:id="@+id/lbl_professora_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
-                android:text="@string/professora_nome"
-                android:textAppearance="@style/AppTheme.lbl_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_professora"
-                app:layout_constraintStart_toStartOf="@+id/lbl_professora"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_professora" />
+                <TextView
+                    android:id="@+id/lbl_professora_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/professora_nome"
+                    android:textAppearance="@style/AppTheme.lbl_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_professora"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_professora"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_professora" />
 
-            <TextView
-                android:id="@+id/lbl_desenvolvedor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:gravity="center_horizontal"
-                android:text="@string/desenvolvedor"
-                android:textAppearance="@style/AppTheme.h1_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_professora_nome"
-                app:layout_constraintStart_toStartOf="@+id/lbl_professora_nome"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_professora_nome" />
+                <TextView
+                    android:id="@+id/lbl_desenvolvedor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/desenvolvedor"
+                    android:textAppearance="@style/AppTheme.h1_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_professora_nome"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_professora_nome"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_professora_nome" />
 
-            <TextView
-                android:id="@+id/lbl_desenvolvedor_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:gravity="center_horizontal"
-                android:text="@string/desenvolvedor_nome"
-                android:textAppearance="@style/AppTheme.lbl_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_desenvolvedor"
-                app:layout_constraintStart_toStartOf="@+id/lbl_desenvolvedor"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_desenvolvedor" />
+                <TextView
+                    android:id="@+id/lbl_desenvolvedor_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/desenvolvedor_nome"
+                    android:textAppearance="@style/AppTheme.lbl_black"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_desenvolvedor"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_desenvolvedor"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_desenvolvedor" />
 
-            <ImageView
-                android:id="@+id/img_logo_ifam"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal"
-                android:contentDescription="@string/description_ifam"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/logo_ifam" />
-        </android.support.constraint.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/img_logo_ifam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:contentDescription="@string/description_ifam"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:srcCompat="@drawable/logo_ifam" />
+            </android.support.constraint.ConstraintLayout>
 
 
         <!-- Componentes aqui -->

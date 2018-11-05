@@ -1,6 +1,9 @@
 package com.example.aluno.appbio.Model;
 
-import android.arch.persistence.room.*;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
@@ -16,12 +19,16 @@ public class Assunto implements Serializable {
     @NonNull
     private String nome;
 
+    @NonNull
+    private boolean ativo;
+
     public Assunto() {
     }
 
     @Ignore
-    public Assunto(@NonNull String nome) {
+    public Assunto(@NonNull String nome, @NonNull boolean ativo) {
         this.nome = nome;
+        this.ativo = ativo;
     }
 
     @NonNull
@@ -42,17 +49,26 @@ public class Assunto implements Serializable {
         this.nome = nome;
     }
 
+    @NonNull
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(@NonNull boolean ativo) {
+        this.ativo = ativo;
+    }
+
     @Override
     public String toString() {
         return nome;
     }
 
     public static Assunto[] popularBanco() {
-        return new Assunto[] {
-                new Assunto("Tecido Epitelial"),
-                new Assunto("Tecido Conjuntivo"),
-                new Assunto("Tecido Adiposo"),
-                new Assunto("Tecido Cartilaginoso")
+        return new Assunto[]{
+                new Assunto("Tecido Epitelial", true),
+                new Assunto("Tecido Conjuntivo", true),
+                new Assunto("Tecido Adiposo", true),
+                new Assunto("Tecido Cartilaginoso", true)
         };
     }
 }

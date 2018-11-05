@@ -1,6 +1,7 @@
 package com.example.aluno.appbio.Interface;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -9,23 +10,40 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.aluno.appbio.Adapter.CheckboxAssuntoListAdapter;
+import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
+import com.example.aluno.appbio.Repository.AssuntoRepository;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemClick;
+import butterknife.OnItemLongClick;
+import butterknife.OnItemSelected;
 
 public class Configuracoes extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    public Toolbar toolbar;
 
     @BindView(R.id.drawerLayout)
-    DrawerLayout layout;
+    public DrawerLayout layout;
 
     @BindView(R.id.navView)
-    NavigationView navigationView;
+    public NavigationView navigationView;
+
+    @BindView(R.id.list_assuntos)
+    public ListView listViewAssuntos;
+
+    private List<Assunto> assuntos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +59,58 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        try {
+            assuntos = new ProcurarAssuntos().execute().get();
+        } catch (Exception e) {
+            Toast.makeText(this, "Houve um erro ao buscar os assuntos!", Toast.LENGTH_SHORT).show();
+            Log.e("ERRO ASSUNTOS", e.getMessage());
+            e.printStackTrace();
+            finish();
+        }
+
+        CheckboxAssuntoListAdapter adapter = new CheckboxAssuntoListAdapter(this, this, assuntos);
+        listViewAssuntos.setAdapter(adapter);
+
+    }
+
+    @OnItemSelected(R.id.list_assuntos)
+    public void marcar(int position) {
+        Log.e("ENTROU MA FUNÇÃO", "ITEM SELECTED");
+
+
+    }
+
+
+    @OnItemClick(R.id.list_assuntos)
+    public void marcar2(int position) {
+        Log.e("ENTROU MA FUNÇÃO", "ITEM CLICK");
+
+
+    }
+
+
+    @OnItemLongClick(R.id.list_assuntos)
+    public boolean marcar3(int position) {
+        Log.e("ENTROU MA FUNÇÃO", "LONG CLICK");
+
+        return true;
+    }
+
+    @OnClick(R.id.btn_salvar)
+    public void salvarConfiguracoes() {
+        Log.e("FUNÇÃO SALVAR", assuntos.toString());
+        try {
+
+            Log.e("FUNÇÃO SALVAR", "TRY");
+            new AtualizarAssuntos().execute(assuntos);
+        } catch (Exception e) {
+
+            Log.e("FUNÇÃO SALVAR", "CATCHE");
+            Toast.makeText(this, "Houve um erro ao salvar suas configurações", Toast.LENGTH_SHORT).show();
+            Log.e("ERRO ATUALIZAR CONFIG", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -48,12 +118,6 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
         switch (item.getItemId()) {
             case R.id.nav_item_inicio: {
                 Intent i = new Intent(this, TelaPrincipal.class);
-                startActivity(i);
-                finish();
-                break;
-            }
-            case R.id.nav_item_conteudo_programatico: {
-                Intent i = new Intent(this, ConteudoProgramatico.class);
                 startActivity(i);
                 finish();
                 break;
@@ -89,4 +153,43 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
             super.onBackPressed();
         }
     }
+
+    private class ProcurarAssuntos extends AsyncTask<Void, Void, List<Assunto>> {
+        @Override
+        protected List<Assunto> doInBackground(Void... voids) {
+            try {
+                return AssuntoRepository.getAll(Configuracoes.this);
+            } catch (Exception e) {
+                Log.e("ERRO ASYNC ASSUNTOS", e.getMessage());
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
+    private class AtualizarAssuntos extends AsyncTask<List<Assunto>, Void, Void> {
+
+        @Override
+        protected Void doInBackground(List<Assunto>... lists) {
+
+            Log.e("FUNÇÃO SALVAR", "ASYNC");
+            List<Assunto> assuntos = lists[0];
+            boolean resultado = true;
+
+            try {
+                resultado = AssuntoRepository.atualizar(assuntos, Configuracoes.this);
+            } catch (Exception e) {
+                Log.e("ERRO ASYNC ASSUNTO", e.getMessage());
+                e.printStackTrace();
+                cancel(true);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            Toast.makeText(Configuracoes.this, "Configurações salvas", Toast.LENGTH_SHORT);
+        }
+    }
+
 }

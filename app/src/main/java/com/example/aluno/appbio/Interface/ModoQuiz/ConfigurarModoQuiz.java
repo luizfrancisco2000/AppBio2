@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -26,6 +27,9 @@ import butterknife.OnItemSelected;
 
 public class ConfigurarModoQuiz extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.spin_assuntos)
     public Spinner spinAssuntos;
 
@@ -37,7 +41,6 @@ public class ConfigurarModoQuiz extends AppCompatActivity {
 
     private List<Assunto> assuntos;
 
-    private static final int REQUEST_CODE_QUIZ = 1;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_PONTUACAO = "keyPontuacao";
     private int maiorPontuacao;
@@ -48,6 +51,8 @@ public class ConfigurarModoQuiz extends AppCompatActivity {
         setContentView(R.layout.activity_configura_modo_quiz);
 
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         try {
             assuntos = new BuscarAssuntos().execute().get();
@@ -124,7 +129,7 @@ public class ConfigurarModoQuiz extends AppCompatActivity {
         @Override
         protected List<Assunto> doInBackground(Void... voids) {
             try {
-                return AssuntoRepository.getAll(ConfigurarModoQuiz.this);
+                return AssuntoRepository.getAllAtivos(ConfigurarModoQuiz.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC ASSUNTOS", e.getMessage());
                 e.printStackTrace();

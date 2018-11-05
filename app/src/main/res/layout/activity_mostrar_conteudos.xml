@@ -1,41 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    android:padding="15dp"
     tools:context=".Interface.ModoEstudo.MostrarConteudos"
     tools:openDrawer="start">
 
-    <TableRow
+    <include
+        android:id="@+id/include5"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include5"
+        app:layout_constraintVertical_bias="0.0">
 
-        <EditText
-            android:id="@+id/txt_filtro_conteudo"
-            android:layout_width="312dp"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/hint_filtro_conteudo"
-            android:inputType=""
-            tools:targetApi="o" />
-
-        <ImageView
-            android:id="@+id/img_pesquisa"
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/ic_pesquisa" />
+            android:layout_height="wrap_content">
 
-    </TableRow>
+            <EditText
+                android:id="@+id/txt_filtro_conteudo"
+                android:layout_width="312dp"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:hint="@string/hint_filtro_conteudo"
+                android:inputType=""
+                tools:targetApi="o" />
+
+            <ImageView
+                android:id="@+id/img_pesquisa"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/ic_pesquisa" />
+
+        </TableRow>
 
 
-    <ListView
-        android:id="@+id/list_conteudos"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></ListView>
+        <ListView
+            android:id="@+id/list_conteudos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
 
-</LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

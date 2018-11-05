@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -24,6 +25,9 @@ import butterknife.OnTextChanged;
 
 public class MostrarConteudos extends AppCompatActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @BindView(R.id.txt_filtro_conteudo)
     EditText txtFiltro;
 
@@ -42,6 +46,8 @@ public class MostrarConteudos extends AppCompatActivity {
         setContentView(R.layout.activity_mostrar_conteudos);
 
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         try {
             Intent intent = getIntent();

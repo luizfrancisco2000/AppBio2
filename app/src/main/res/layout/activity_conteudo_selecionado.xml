@@ -7,20 +7,28 @@
     android:gravity="center_vertical"
     tools:context=".Interface.ModoEstudo.ConteudoSelecionado">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/lbl_nome_assunto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="center_horizontal"
         android:textAppearance="@style/AppTheme.h1_black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
 
     <TextView
@@ -114,19 +122,27 @@
             android:id="@+id/btn_anterior"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
+            android:background="@drawable/formato_botao_vermelho"
+            android:drawableStart="@drawable/ic_point_left"
             android:drawableLeft="@drawable/ic_point_left"
             android:text="@string/lbl_btn_anterior"
-            android:drawableStart="@drawable/ic_point_left" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_proximo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             android:layout_weight="1"
+            android:background="@drawable/formato_botao_azul"
+            android:drawableEnd="@drawable/ic_point_right"
             android:drawableRight="@drawable/ic_point_right"
             android:text="@string/lbl_btn_proximo"
-            android:drawableEnd="@drawable/ic_point_right" />
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
     </LinearLayout>
 
 

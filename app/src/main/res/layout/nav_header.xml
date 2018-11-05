@@ -12,4 +12,12 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+    <TextView
+        android:id="@+id/nav_header_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:text="@string/menu_navegacao"
+        android:textAppearance="@style/AppTheme.h1_white" />
+
 </LinearLayout>

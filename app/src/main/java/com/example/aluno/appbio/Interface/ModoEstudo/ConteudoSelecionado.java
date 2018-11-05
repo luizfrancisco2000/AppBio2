@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class ConteudoSelecionado extends AppCompatActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @BindView(R.id.lbl_caracteristica)
     public TextView lblCaracteristica;
@@ -61,6 +65,8 @@ public class ConteudoSelecionado extends AppCompatActivity {
         }
 
         ButterKnife.bind(this);
+
+        setSupportActionBar(toolbar);
 
         popularTela();
 
