@@ -59,7 +59,9 @@ public class MostrarConteudos extends AppCompatActivity {
             finish();
         }
 
-        popularTela();
+        Log.e("ASSUNTO", assunto.toString());
+
+        //popularTela();
     }
 
     @OnTextChanged(R.id.txt_filtro_conteudo)
