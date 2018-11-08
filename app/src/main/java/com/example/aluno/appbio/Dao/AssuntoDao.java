@@ -29,5 +29,5 @@ public interface AssuntoDao {
     List<Assunto> getByFiltro(String filtro);
 
     @Query("SELECT * FROM assunto WHERE id = :id")
-    Assunto getAssuntoById(long id);
+    Assunto getById(long id);
 }

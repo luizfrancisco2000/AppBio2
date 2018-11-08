@@ -34,8 +34,8 @@ public class ScreenReceiver extends BroadcastReceiver {
             Collections.shuffle(assuntosAtivos);
             Log.e("ASSUNTOS", assuntosAtivos.toString());
             Log.e("ASSUNTO 0", assuntosAtivos.get(0).toString());
-            Intent i = new Intent(context, MostrarConteudos.class);
-            intent.putExtra("assunto", assuntosAtivos.get(0));
+            Intent i = new Intent(context, TelaPrincipal.class);
+            intent.putExtra("assuntoId", assuntosAtivos.get(0).getId());
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         }

@@ -14,6 +14,7 @@ import com.example.aluno.appbio.Adapter.ConteudoListAdapter;
 import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.Model.Conteudo;
 import com.example.aluno.appbio.R;
+import com.example.aluno.appbio.Repository.AssuntoRepository;
 import com.example.aluno.appbio.Repository.ConteudoRepository;
 
 import java.util.List;
@@ -48,20 +49,44 @@ public class MostrarConteudos extends AppCompatActivity {
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        long id = 0;
 
         try {
             Intent intent = getIntent();
-            assunto = (Assunto) intent.getSerializableExtra("assunto");
+            id = intent.getLongExtra("assuntoId", 0);
         } catch (Exception e) {
-            Toast.makeText(this, "Ocorreu um erro ao listar os conteudos", Toast.LENGTH_SHORT);
-            Log.e("ERRO INTENT ASSUNTO", e.getMessage());
+            Log.e("ERRO INTENT ASSUNTOID", e.getMessage());
             e.printStackTrace();
-            finish();
         }
 
-        Log.e("ASSUNTO", assunto.toString());
+        if(id == 0){
+            try {
+                Intent intent = getIntent();
+                assunto = (Assunto) intent.getSerializableExtra("assunto");
+            } catch (Exception e) {
+                Toast.makeText(this, "Ocorreu um erro ao listar os conteudos", Toast.LENGTH_SHORT);
+                Log.e("ERRO INTENT ASSUNTO", e.getMessage());
+                e.printStackTrace();
+                finish();
+            }
+        }else{
+            try {
+                assunto = new ProcurarAssuntoById().execute(id).get();
+            } catch (Exception e) {
+                Toast.makeText(this, "Ocorreu um erro ao listar os conteudos", Toast.LENGTH_SHORT);
+                Log.e("ERRO INTENT ASSUNTO", e.getMessage());
+                e.printStackTrace();
+                finish();
+            }
+        }
 
-        //popularTela();
+        popularTela();
     }
 
     @OnTextChanged(R.id.txt_filtro_conteudo)
@@ -101,7 +126,6 @@ public class MostrarConteudos extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     private class ProcurarConteudos extends AsyncTask<Long, Void, List<Conteudo>> {
 
         @Override
@@ -124,6 +148,19 @@ public class MostrarConteudos extends AppCompatActivity {
                 return ConteudoRepository.listarPorAssuntoECaracTeristica(strings[0], assunto.getId(), MostrarConteudos.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC CONTEUDOS", e.getMessage());
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }
+
+    private class ProcurarAssuntoById extends AsyncTask<Long, Void, Assunto> {
+        @Override
+        protected Assunto doInBackground(Long... longs) {
+            try {
+                return AssuntoRepository.getById(longs[0], MostrarConteudos.this);
+            } catch (Exception e) {
+                Log.e("ERRO ASYNC ASSUNTOS", e.getMessage());
                 e.printStackTrace();
                 return null;
             }
