@@ -20,14 +20,12 @@ import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
 import com.example.aluno.appbio.Repository.AssuntoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.OnItemLongClick;
-import butterknife.OnItemSelected;
 
 public class Configuracoes extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -74,43 +72,33 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
 
     }
 
-    @OnItemSelected(R.id.list_assuntos)
-    public void marcar(int position) {
-        Log.e("ENTROU MA FUNÇÃO", "ITEM SELECTED");
-
-
-    }
-
-
-    @OnItemClick(R.id.list_assuntos)
-    public void marcar2(int position) {
-        Log.e("ENTROU MA FUNÇÃO", "ITEM CLICK");
-
-
-    }
-
-
-    @OnItemLongClick(R.id.list_assuntos)
-    public boolean marcar3(int position) {
-        Log.e("ENTROU MA FUNÇÃO", "LONG CLICK");
-
-        return true;
-    }
-
     @OnClick(R.id.btn_salvar)
     public void salvarConfiguracoes() {
         Log.e("FUNÇÃO SALVAR", assuntos.toString());
+
+        assuntos = new ArrayList<>();
+
         try {
 
-            Log.e("FUNÇÃO SALVAR", "TRY");
-            new AtualizarAssuntos().execute(assuntos);
-        } catch (Exception e) {
+            if (listViewAssuntos != null) {
+                CheckboxAssuntoListAdapter adapter = (CheckboxAssuntoListAdapter) listViewAssuntos.getAdapter();
 
-            Log.e("FUNÇÃO SALVAR", "CATCHE");
-            Toast.makeText(this, "Houve um erro ao salvar suas configurações", Toast.LENGTH_SHORT).show();
-            Log.e("ERRO ATUALIZAR CONFIG", e.getMessage());
+                StringBuilder builder = new StringBuilder();
+
+                for (int i = 0; i < adapter.getCount(); i++) {
+                    Assunto assunto = (Assunto) adapter.getItem(i);
+                    assuntos.add(assunto);
+                }
+
+                new AtualizarAssuntos().execute(assuntos);
+            }
+
+        } catch (Exception e) {
+            Log.e("FUNÇÃO SALVAR", e.getMessage());
             e.printStackTrace();
+            Toast.makeText(this, "Houve um erro ao salvar suas configurações", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     @Override
@@ -171,13 +159,10 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
 
         @Override
         protected Void doInBackground(List<Assunto>... lists) {
-
-            Log.e("FUNÇÃO SALVAR", "ASYNC");
             List<Assunto> assuntos = lists[0];
-            boolean resultado = true;
 
             try {
-                resultado = AssuntoRepository.atualizar(assuntos, Configuracoes.this);
+                AssuntoRepository.atualizar(assuntos, Configuracoes.this);
             } catch (Exception e) {
                 Log.e("ERRO ASYNC ASSUNTO", e.getMessage());
                 e.printStackTrace();
@@ -188,7 +173,13 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            Toast.makeText(Configuracoes.this, "Configurações salvas", Toast.LENGTH_SHORT);
+            super.onPostExecute(aVoid);
+
+            Toast.makeText(Configuracoes.this, "Configurações salvas com sucesso!", Toast.LENGTH_LONG).show();
+
+            Intent i = new Intent(Configuracoes.this, TelaPrincipal.class);
+            startActivity(i);
+            finish();
         }
     }
 

@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
@@ -32,30 +35,37 @@ public class CheckboxAssuntoListAdapter extends BaseAdapter {
 
     public Object getItem(int arg0) {
         // TODO Auto-generated method stub
-        return null;
+        return assuntos.get(arg0);
     }
 
     public long getItemId(int position) {
         // TODO Auto-generated method stub
-        return position;
+        return assuntos.get(position).getId();
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Assunto assunto = assuntos.get(position);
+        final Assunto assunto = assuntos.get(position);
 
-        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.checkbox_layout, null);
 
-        View vi = convertView;
-        if (convertView == null)
-            vi = inflater.inflate(R.layout.checkbox_layout, parent, false);
+        CheckBox checkBox = view.findViewById(R.id.checkbox1);
+        TextView textView = view.findViewById(R.id.lbl_assunto);
 
-        CheckBox checkBox = (CheckBox) vi.findViewById(R.id.checkbox_assunto);
+        if (assunto.isAtivo() && !checkBox.isChecked()){
+            checkBox.setChecked(assunto.isAtivo());
+        }
 
-        checkBox.setText(assunto.getNome());
+        textView.setText(assunto.getNome());
 
-        checkBox.setChecked(assunto.isAtivo());
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                assunto.setAtivo(isChecked);
+            }
+        });
 
-        return vi;
+
+        return view;
     }
 }

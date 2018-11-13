@@ -63,14 +63,12 @@ public class AssuntoRepository {
     }
 
 
-    public static boolean atualizar(List<Assunto> assuntos, Context context) {
+    public static void atualizar(List<Assunto> assuntos, Context context) {
         try {
             AppDatabase.getAppDatabase(context).assuntoDao().atualizaLista(assuntos);
-            return true;
         } catch (Exception e) {
             Log.e("ERRO UPDATE ASSUNTO", e.getMessage());
             e.printStackTrace();
-            return false;
         }
     }
 }
