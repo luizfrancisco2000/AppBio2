@@ -3,6 +3,7 @@ package com.example.aluno.appbio.Interface;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.aluno.appbio.Interface.ModoEstudo.MostrarAssuntos;
 import com.example.aluno.appbio.Interface.ModoQuiz.ConfigurarModoQuiz;
@@ -27,6 +30,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 public class TelaPrincipal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,6 +43,11 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
     @BindView(R.id.navView)
     NavigationView navigationView;
+
+    @BindView(R.id.switch_tela_bloqueio)
+    Switch switch_tela_bloqueio;
+
+    private boolean ativo_tela_bloqueio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +65,45 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
         Log.e("POPULAR BANCO", "Chamando função");
         popularBanco();
+
+
+        try {
+            SharedPreferences sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+            ativo_tela_bloqueio = sharedPreferences.getBoolean("ativo_tela_bloqueio", false);
+        } catch (Exception e) {
+            Log.e("ERRO INTENT BLOQUEIO", e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
+    @OnCheckedChanged(R.id.switch_tela_bloqueio)
+    public void ativarTelaBloqueio(boolean isChecked) {
+
+        ativo_tela_bloqueio = isChecked;
+
+
+        try {
+            SharedPreferences preferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("ativo_tela_bloqueio", ativo_tela_bloqueio);
+            editor.apply();
+
+            if (ativo_tela_bloqueio)
+                Toast.makeText(this, "Um conceito será exibido sempre que a tela for desbloqueada!", Toast.LENGTH_LONG);
+            else
+                Toast.makeText(this, "Desativado!", Toast.LENGTH_LONG);
+
+        } catch (Exception e) {
+            Log.e("ERRO INTENT BLOQUEIO", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     private void popularBanco() {
         boolean res = true;
+
+        switch_tela_bloqueio.setChecked(ativo_tela_bloqueio);
 
         try {
             res = new IsBancoVazio().execute().get();
