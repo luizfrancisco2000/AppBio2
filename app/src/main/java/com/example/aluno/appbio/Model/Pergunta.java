@@ -132,7 +132,7 @@ public class Pergunta implements Serializable {
 
     public static Pergunta[] populaBanco() {
         return new Pergunta[]{
-                new Pergunta("O tecido epitelial glandular tem a capacidade de:", "Revestir, Sintetizar, Secretar", "", "", 1, 1),
+                new Pergunta("O tecido epitelial glandular tem a capacidade de:", "Secretar", "Revestir", "", 1, 1),
                 new Pergunta("O tecido epitelial caracteriza-se por apresentar:", "", "Pouca quantidade de material intercelular", "", 2, 2),
                 new Pergunta("Os epitélios podem ser classificados em:", "", "", "Epitélio Simples, Estratificados, Pseudo-estratificados", 3, 1),
                 new Pergunta("As formas das células do tecido epitelial são classificadas em:", "", "Pavimentosas, Cúbicas, Prismáticas", "", 2, 1),
