@@ -120,29 +120,38 @@
 
         <Button
             android:id="@+id/btn_anterior"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:background="@drawable/formato_botao_vermelho"
             android:drawableStart="@drawable/ic_point_left"
             android:drawableLeft="@drawable/ic_point_left"
             android:text="@string/lbl_btn_anterior"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/formato_botao_verde"
+            android:text="@android:string/ok"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/btn_proximo"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:background="@drawable/formato_botao_azul"
             android:drawableEnd="@drawable/ic_point_right"
             android:drawableRight="@drawable/ic_point_right"
             android:text="@string/lbl_btn_proximo"
             android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 

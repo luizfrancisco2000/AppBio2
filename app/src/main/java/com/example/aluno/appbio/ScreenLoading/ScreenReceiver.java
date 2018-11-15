@@ -11,7 +11,7 @@ import com.example.aluno.appbio.Interface.ConceitoAleatorio;
 public class ScreenReceiver extends BroadcastReceiver {
     ScreenReceiver screen;
     Context context = null;
-    boolean ativo_tela_bloqueio;
+    boolean ativo_tela_bloqueio = false;
 
     @Override
     public void onReceive(Context context, Intent intent) {

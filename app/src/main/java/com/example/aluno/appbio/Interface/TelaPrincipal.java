@@ -70,6 +70,7 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
         try {
             SharedPreferences sharedPreferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
             ativo_tela_bloqueio = sharedPreferences.getBoolean("ativo_tela_bloqueio", false);
+            switch_tela_bloqueio.setChecked(ativo_tela_bloqueio);
         } catch (Exception e) {
             Log.e("ERRO INTENT BLOQUEIO", e.getMessage());
             e.printStackTrace();
@@ -81,7 +82,6 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
     public void ativarTelaBloqueio(boolean isChecked) {
 
         ativo_tela_bloqueio = isChecked;
-
 
         try {
             SharedPreferences preferences = getSharedPreferences("prefs", Context.MODE_PRIVATE);
@@ -102,8 +102,6 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
 
     private void popularBanco() {
         boolean res = true;
-
-        switch_tela_bloqueio.setChecked(ativo_tela_bloqueio);
 
         try {
             res = new IsBancoVazio().execute().get();

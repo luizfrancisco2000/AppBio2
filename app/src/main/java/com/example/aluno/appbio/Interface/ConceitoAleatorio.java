@@ -1,12 +1,14 @@
 package com.example.aluno.appbio.Interface;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.Model.Conteudo;
@@ -22,6 +24,7 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ConceitoAleatorio extends AppCompatActivity {
 
@@ -37,12 +40,21 @@ public class ConceitoAleatorio extends AppCompatActivity {
     @BindView(R.id.lbl_nome_assunto)
     public TextView lblAssunto;
 
+    @BindView(R.id.btn_ok)
+    public Button btn_ok;
+
+    private List<Assunto> assuntos = new ArrayList<>();
+    private List<Conteudo> conteudos = new ArrayList<>();
+    private int posAtual = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_conceito_aleatorio);
+        setContentView(R.layout.activity_conteudo_selecionado);
 
         ButterKnife.bind(this);
+
+        btn_ok.setVisibility(View.VISIBLE);
 
         setSupportActionBar(toolbar);
 
@@ -50,8 +62,6 @@ public class ConceitoAleatorio extends AppCompatActivity {
     }
 
     private void selecionarConceito() {
-        List<Assunto> assuntos = new ArrayList<>();
-        List<Conteudo> conteudos = new ArrayList<>();
 
         try {
             assuntos = new ProcurarAssuntos().execute().get();
@@ -65,16 +75,12 @@ public class ConceitoAleatorio extends AppCompatActivity {
 
         Random rand = new Random();
 
-        Assunto assunto = new Assunto();
         try {
-            assunto = assuntos.get(rand.nextInt(assuntos.size()));
-        } catch (Exception e) {
-            Intent intent = new Intent(this, TelaPrincipal.class);
-            startActivity(intent);
-        }
 
-        try {
-            conteudos = new ProcurarConteudos().execute(assunto.getId()).get();
+            for (Assunto assunto : assuntos) {
+                conteudos.addAll(new ProcurarConteudos().execute(assunto.getId()).get());
+            }
+
         } catch (Exception e) {
             Log.e("ERRO POPULAR TELA", e.getMessage());
             e.printStackTrace();
@@ -83,13 +89,14 @@ public class ConceitoAleatorio extends AppCompatActivity {
 
         Collections.shuffle(conteudos);
 
-        Conteudo conteudo = conteudos.get(rand.nextInt(conteudos.size()));
 
-        popularTela(assunto.getNome(), conteudo);
+        popularTela();
 
     }
 
-    private void popularTela(String assuntoNome, Conteudo conteudo) {
+    private void popularTela() {
+
+        Conteudo conteudo = conteudos.get(posAtual);
 
         String[] conceitos = conteudo.getConceito().split(",");
 
@@ -114,9 +121,41 @@ public class ConceitoAleatorio extends AppCompatActivity {
                 break;
         }
 
-        lblAssunto.setText(assuntoNome);
+        for (Assunto assunto : assuntos) {
+            if (assunto.getId() == conteudo.getAssunto_id()) {
+                lblAssunto.setText(assunto.getNome());
+                break;
+            }
+        }
+
         lblCaracteristica.setText(conteudo.getCaracteristica());
 
+    }
+
+    @OnClick(R.id.btn_anterior)
+    public void anterior() {
+        if (posAtual > 0) {
+            posAtual--;
+            popularTela();
+        } else {
+            Toast.makeText(this, "Primeiro conteúdo cadastrado!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @OnClick(R.id.btn_ok)
+    public void sair() {
+        finish();
+    }
+
+    @OnClick(R.id.btn_proximo)
+    public void proximo() {
+        posAtual++;
+        if (posAtual < conteudos.size()) {
+            popularTela();
+        } else {
+            posAtual--;
+            Toast.makeText(this, "Último conteúdo cadastrado!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
