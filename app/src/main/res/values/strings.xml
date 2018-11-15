@@ -31,14 +31,12 @@
 
 
     <string name="alunos">Alunos</string>
-    <string name="victor">Victor de Castro Farias</string>
-    <string name="reully">Reully Mary</string>
-    <string name="silvia">Silvia Celina</string>
+    <string name="alunos_nomes">Victor de Castro Farias \n Reully Mary \n Silvia Celina</string>
     <string name="professora">Professora/Orientadora</string>
     <string name="professora_nome">Letícia de Oliveira Rosa</string>
-    <string name="desenvolvedor">Desenvolvedor</string>
+    <string name="fabrica">Fábrica de Software</string>
     <string name="ano">2018</string>
-    <string name="desenvolvedor_nome">Igor Carvalho Costa</string>
+    <string name="fabrica_componentes">Emmerson Santa Rita \n Igor Carvalho Costa \n Luiz Francisco</string>
     <string name="lbl_assuntos_ativos">Assuntos ativos no Modo Quiz e Estudo:</string>
     <string name="lbl_tamanho_fonte">Tamanho da fonte:</string>
     <string name="lbl_cor_fonte">Cor da fonte:</string>
@@ -47,7 +45,6 @@
     <string-array name="arr_str_tamanho_fonte">
         <item>Pequena</item>
         <item>Padrão</item>
-        <item>Média</item>
         <item>Grande</item>
     </string-array>
 </resources>

@@ -6,131 +6,93 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@drawable/gradient_background">
 
-        <include layout="@layout/toolbar" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
+            <include layout="@layout/toolbar" />
 
-            <android.support.constraint.ConstraintLayout
+            <TextView
+                android:id="@+id/lbl_alunos"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient_background"
-                android:padding="15dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:text="@string/alunos"
+                android:textAppearance="@style/AppTheme.h1_black"/>
 
-                <TextView
-                    android:id="@+id/lbl_alunos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/alunos"
-                    android:textAppearance="@style/AppTheme.h1_black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/lbl_alunos_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:text="@string/alunos_nomes"
+                android:textAppearance="@style/AppTheme.lbl_black" />
 
-                <TextView
-                    android:id="@+id/lbl_victor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/victor"
-                    android:textAppearance="@style/AppTheme.lbl_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_alunos"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_alunos"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_alunos" />
+            <TextView
+                android:id="@+id/lbl_professora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal"
+                android:text="@string/professora"
+                android:textAppearance="@style/AppTheme.h1_black"/>
 
-                <TextView
-                    android:id="@+id/lbl_reully"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/reully"
-                    android:textAppearance="@style/AppTheme.lbl_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_victor"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_victor"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_victor" />
+            <TextView
+                android:id="@+id/lbl_professora_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:text="@string/professora_nome"
+                android:textAppearance="@style/AppTheme.lbl_black" />
 
-                <TextView
-                    android:id="@+id/lbl_silvia"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/silvia"
-                    android:textAppearance="@style/AppTheme.lbl_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_reully"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_reully"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_reully" />
+            <TextView
+                android:id="@+id/lbl_fabrica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center_horizontal"
+                android:text="@string/fabrica"
+                android:textAppearance="@style/AppTheme.h1_black" />
 
+            <TextView
+                android:id="@+id/lbl_fabrica_componentes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:text="@string/fabrica_componentes"
+                android:textAppearance="@style/AppTheme.lbl_black" />
 
-                <TextView
-                    android:id="@+id/lbl_professora"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/professora"
-                    android:textAppearance="@style/AppTheme.h1_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_silvia"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_silvia"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_silvia" />
+            <TextView
+                android:id="@+id/lbl_ano"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:gravity="center_horizontal"
+                android:text="@string/ano"
+                android:textAppearance="@style/AppTheme.lbl_black" />
 
-                <TextView
-                    android:id="@+id/lbl_professora_nome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/professora_nome"
-                    android:textAppearance="@style/AppTheme.lbl_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_professora"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_professora"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_professora" />
+            <ImageView
+                android:id="@+id/img_logo_ifam"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription="@string/description_ifam"
+                app:srcCompat="@drawable/logo_ifam" />
 
-                <TextView
-                    android:id="@+id/lbl_desenvolvedor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="32dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/desenvolvedor"
-                    android:textAppearance="@style/AppTheme.h1_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_professora_nome"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_professora_nome"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_professora_nome" />
+        </LinearLayout>
+    </ScrollView>
 
-                <TextView
-                    android:id="@+id/lbl_desenvolvedor_nome"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/desenvolvedor_nome"
-                    android:textAppearance="@style/AppTheme.lbl_black"
-                    app:layout_constraintEnd_toEndOf="@+id/lbl_desenvolvedor"
-                    app:layout_constraintStart_toStartOf="@+id/lbl_desenvolvedor"
-                    app:layout_constraintTop_toBottomOf="@+id/lbl_desenvolvedor" />
-
-                <ImageView
-                    android:id="@+id/img_logo_ifam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:contentDescription="@string/description_ifam"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@drawable/logo_ifam" />
-            </android.support.constraint.ConstraintLayout>
-
-
-        <!-- Componentes aqui -->
-
-    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navView"

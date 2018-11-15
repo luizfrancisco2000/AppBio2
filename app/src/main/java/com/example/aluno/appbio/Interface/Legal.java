@@ -10,13 +10,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.aluno.appbio.R;
+import com.example.aluno.appbio.Util.SharedPreferencesManager;
+import com.example.aluno.appbio.Util.TextViewFontSizeSetter;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 
 public class Legal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    @BindViews({R.id.lbl_alunos, R.id.lbl_alunos_nome, R.id.lbl_professora, R.id.lbl_professora_nome, R.id.lbl_fabrica, R.id.lbl_fabrica_componentes, R.id.lbl_ano})
+    List<TextView> labels;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -32,7 +41,10 @@ public class Legal extends AppCompatActivity implements NavigationView.OnNavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_legal);
 
+        SharedPreferencesManager manager = new SharedPreferencesManager(this);
+
         ButterKnife.bind(this);
+        ButterKnife.apply(labels, TextViewFontSizeSetter.SET_FONT_SIZE, manager.getFont());
 
         setSupportActionBar(toolbar);
 
@@ -54,12 +66,6 @@ public class Legal extends AppCompatActivity implements NavigationView.OnNavigat
             }
             case R.id.nav_item_configuracoes: {
                 Intent i = new Intent(this, Configuracoes.class);
-                startActivity(i);
-                finish();
-                break;
-            }
-            case R.id.nav_item_ajuda: {
-                Intent i = new Intent(this, Ajuda.class);
                 startActivity(i);
                 finish();
                 break;

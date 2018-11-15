@@ -1,7 +1,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="fonte_pequena">18sp</dimen>
-    <dimen name="fonte_padrao">20sp</dimen>
-    <dimen name="fonte_media">22sp</dimen>
-    <dimen name="fonte_grande">24sp</dimen>
+    <dimen name="fonte_pequena">10sp</dimen>
+    <dimen name="fonte_padrao">12sp</dimen>
+    <dimen name="fonte_grande">14sp</dimen>
 </resources>

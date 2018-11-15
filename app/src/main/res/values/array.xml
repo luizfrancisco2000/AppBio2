@@ -6,4 +6,10 @@
         <item>Ajuda</item>
         <item>Legal</item>
     </string-array>
+
+    <array name="font_sizes">
+        <item>@dimen/fonte_pequena</item>
+        <item>@dimen/fonte_padrao</item>
+        <item>@dimen/fonte_grande</item>
+    </array>
 </resources>

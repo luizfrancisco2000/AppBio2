@@ -62,11 +62,6 @@
             android:name=".Interface.Configuracoes"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <!-- Ajuda de como usar o aplicativo -->
-        <activity
-            android:name=".Interface.Ajuda"
-            android:theme="@style/AppTheme.NoActionBar" />
-
         <!-- Informações adicionais sobre o app -->
         <activity
             android:name=".Interface.Legal"
