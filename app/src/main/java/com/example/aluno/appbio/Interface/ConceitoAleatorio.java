@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +43,9 @@ public class ConceitoAleatorio extends AppCompatActivity {
 
     @BindView(R.id.btn_ok)
     public Button btn_ok;
+
+    @BindView(R.id.img_conceito)
+    ImageView imgView;
 
     private List<Assunto> assuntos = new ArrayList<>();
     private List<Conteudo> conteudos = new ArrayList<>();
@@ -129,7 +133,7 @@ public class ConceitoAleatorio extends AppCompatActivity {
         }
 
         lblCaracteristica.setText(conteudo.getCaracteristica());
-
+        imgView.setImageResource((int) conteudo.getImagemId());
     }
 
     @OnClick(R.id.btn_anterior)

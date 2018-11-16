@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "4350fe9d5f195bd0a47513cc5e61b19e",
+    "identityHash": "5683438c0f4b9c5ed4f3ac2eb638f663",
     "entities": [
       {
         "tableName": "assunto",
@@ -47,7 +47,7 @@
       },
       {
         "tableName": "conteudo",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `caracteristica` TEXT NOT NULL, `conceito` TEXT NOT NULL, `imagem` BLOB, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `caracteristica` TEXT NOT NULL, `conceito` TEXT NOT NULL, `imagemId` INTEGER NOT NULL, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -68,10 +68,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "imagem",
-            "columnName": "imagem",
-            "affinity": "BLOB",
-            "notNull": false
+            "fieldPath": "imagemId",
+            "columnName": "imagemId",
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
             "fieldPath": "assunto_id",
@@ -247,7 +247,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"4350fe9d5f195bd0a47513cc5e61b19e\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5683438c0f4b9c5ed4f3ac2eb638f663\")"
     ]
   }
 }
