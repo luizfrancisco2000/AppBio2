@@ -1,7 +1,12 @@
 package com.example.aluno.appbio.Model;
 
-import android.arch.persistence.room.*;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+
+import com.example.aluno.appbio.R;
 
 import java.io.Serializable;
 
@@ -93,9 +98,26 @@ public class Lamina implements Serializable {
                 '}';
     }
 
-    public static Lamina[] popularBanco(){
+    public static Lamina[] popularBanco() {
         return new Lamina[]{
-                new Lamina(0, 0, "", ""),
+                new Lamina(R.drawable.lamina_3, 3, "Tendão", "Conjuntivo denso modelado"),
+                new Lamina(R.drawable.lamina_6, 6, "Ossos longos", "Ossificação Endrocondral"),
+                new Lamina(R.drawable.lamina_6_2, 6, "Ossos longos", "Ossificação Endrocondral"),
+                new Lamina(R.drawable.lamina_7, 7, "Pele fina", "Epitélio estratificado queratinizado"),
+                new Lamina(R.drawable.lamina_7_2, 7, "Pele fina", "Epitélio estratificado queratinizado"),
+                new Lamina(R.drawable.lamina_8, 8, "Pele grossa", "Epitélio estratificado queratinizado"),
+                new Lamina(R.drawable.lamina_8_2, 8, "Pele grossa", "Epitélio estratificado queratinizado"),
+                new Lamina(R.drawable.lamina_21, 21, "Esôfago", "Epitélio pavimentoso estratificado não queratinizado e glândulas mucosas"),
+                new Lamina(R.drawable.lamina_24, 24, "Jejuno-íleo", "Eoitélio cilíndrico simples com células caliciformes"),
+                new Lamina(R.drawable.lamina_24_2, 24, "Jejuno-íleo", "Eoitélio cilíndrico simples com células caliciformes"),
+                new Lamina(R.drawable.lamina_29, 29, "Traqueia", "Epitélio pseudoestratificado cilíndrico ciliado, conjuntivo frouxo e cartilagem hiliana"),
+                new Lamina(R.drawable.lamina_29_2, 29, "Traqueia", "Epitélio pseudoestratificado cilíndrico ciliado, conjuntivo frouxo e cartilagem hiliana"),
+                new Lamina(R.drawable.lamina_32, 32, "Bexiga", "Epitélio de transição e conjuntivo frouxo"),
+                new Lamina(R.drawable.lamina_32_2, 32, "Bexiga", "Epitélio de transição e conjuntivo frouxo"),
+                new Lamina(R.drawable.lamina_39, 39, "Hipófise", "Glândula cordonal"),
+                new Lamina(R.drawable.lamina_40, 40, "Tireoide", "Glândula Vesicular"),
+                new Lamina(R.drawable.lamina_42, 42, "Medula Espinhal", ""),
+                new Lamina(R.drawable.lamina_42_2, 42, "Medula Espinhal", ""),
         };
     }
 }
