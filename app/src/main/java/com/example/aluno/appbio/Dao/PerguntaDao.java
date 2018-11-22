@@ -9,8 +9,6 @@ import java.util.List;
 
 @Dao
 public interface PerguntaDao {
-    @Insert
-    void salvar(Pergunta pergunta);
 
     @Insert
     void salvarTodos(Pergunta[] perguntas);

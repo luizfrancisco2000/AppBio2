@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +20,6 @@ import com.example.aluno.appbio.Adapter.CheckboxAssuntoListAdapter;
 import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
 import com.example.aluno.appbio.Repository.AssuntoRepository;
-import com.example.aluno.appbio.Util.SharedPreferencesManager;
-import com.example.aluno.appbio.Util.TextViewFontSizeSetter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,35 +44,16 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
     @BindView(R.id.list_assuntos)
     public ListView listViewAssuntos;
 
-    @BindViews({R.id.lbl_assuntos, R.id.lbl_tamanho_fonte})
-    List<TextView> labels;
-
-    @BindView(R.id.spinner_font_size)
-    Spinner spinner;
-
     private List<Assunto> assuntos;
-    private SharedPreferencesManager manager;
-    private float tamanho = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracoes);
 
-        manager = new SharedPreferencesManager(this);
-        tamanho = manager.getFont();
-
         ButterKnife.bind(this);
-        ButterKnife.apply(labels, TextViewFontSizeSetter.SET_FONT_SIZE, tamanho);
 
         float[] tamanhos = {getResources().getDimension(R.dimen.fonte_pequena), getResources().getDimension(R.dimen.fonte_padrao), getResources().getDimension(R.dimen.fonte_grande)};
-
-        for (int i = 0; i < 3; i++) {
-            if (tamanho == tamanhos[i]) {
-                spinner.setSelection(i);
-                break;
-            }
-        }
 
         setSupportActionBar(toolbar);
 
@@ -99,24 +77,7 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
 
     }
 
-    @OnItemSelected(R.id.spinner_font_size)
-    public void mudarTamanhoFonte(int position) {
-        switch (position) {
-            case 0:
-                tamanho = getResources().getDimension(R.dimen.fonte_pequena);
-                break;
 
-            case 1:
-                tamanho = getResources().getDimension(R.dimen.fonte_padrao);
-                break;
-
-            case 2:
-                tamanho = getResources().getDimension(R.dimen.fonte_grande);
-                break;
-        }
-
-        ButterKnife.apply(labels, TextViewFontSizeSetter.SET_FONT_SIZE, tamanho);
-    }
 
     @OnClick(R.id.btn_salvar)
     public void salvarConfiguracoes() {
@@ -125,8 +86,6 @@ public class Configuracoes extends AppCompatActivity implements NavigationView.O
         assuntos = new ArrayList<>();
 
         try {
-
-            manager.setFont(tamanho);
 
             if (listViewAssuntos != null) {
                 CheckboxAssuntoListAdapter adapter = (CheckboxAssuntoListAdapter) listViewAssuntos.getAdapter();

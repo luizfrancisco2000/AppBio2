@@ -44,9 +44,6 @@ public class ConceitoAleatorio extends AppCompatActivity {
     @BindView(R.id.btn_ok)
     public Button btn_ok;
 
-    @BindView(R.id.img_conceito)
-    ImageView imgView;
-
     private List<Assunto> assuntos = new ArrayList<>();
     private List<Conteudo> conteudos = new ArrayList<>();
     private int posAtual = 0;
@@ -133,7 +130,6 @@ public class ConceitoAleatorio extends AppCompatActivity {
         }
 
         lblCaracteristica.setText(conteudo.getCaracteristica());
-        imgView.setImageResource((int) conteudo.getImagemId());
     }
 
     @OnClick(R.id.btn_anterior)

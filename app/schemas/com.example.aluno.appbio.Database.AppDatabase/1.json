@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "5683438c0f4b9c5ed4f3ac2eb638f663",
+    "identityHash": "478edf26d90286fa3e08c0892563081e",
     "entities": [
       {
         "tableName": "assunto",
@@ -47,7 +47,7 @@
       },
       {
         "tableName": "conteudo",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `caracteristica` TEXT NOT NULL, `conceito` TEXT NOT NULL, `imagemId` INTEGER NOT NULL, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `caracteristica` TEXT NOT NULL, `conceito` TEXT NOT NULL, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -65,12 +65,6 @@
             "fieldPath": "conceito",
             "columnName": "conceito",
             "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "imagemId",
-            "columnName": "imagemId",
-            "affinity": "INTEGER",
             "notNull": true
           },
           {
@@ -119,8 +113,61 @@
         ]
       },
       {
+        "tableName": "laminas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id_img` INTEGER NOT NULL, `num_lamina` INTEGER NOT NULL, `local` TEXT NOT NULL, `descricao` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id_img",
+            "columnName": "id_img",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "num_lamina",
+            "columnName": "num_lamina",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "local",
+            "columnName": "local",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "descricao",
+            "columnName": "descricao",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_laminas_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_laminas_id` ON `${TABLE_NAME}` (`id`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
         "tableName": "pergunta",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `pergunta` TEXT NOT NULL, `op1` TEXT NOT NULL, `op2` TEXT NOT NULL, `op3` TEXT NOT NULL, `resposta` INTEGER NOT NULL, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `pergunta` TEXT NOT NULL, `op1` TEXT NOT NULL, `op2` TEXT NOT NULL, `resposta` INTEGER NOT NULL, `assunto_id` INTEGER NOT NULL, FOREIGN KEY(`assunto_id`) REFERENCES `assunto`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -143,12 +190,6 @@
           {
             "fieldPath": "op2",
             "columnName": "op2",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "op3",
-            "columnName": "op3",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -202,52 +243,11 @@
             ]
           }
         ]
-      },
-      {
-        "tableName": "usuario",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nome` TEXT NOT NULL, `progresso` INTEGER NOT NULL)",
-        "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
-          {
-            "fieldPath": "nome",
-            "columnName": "nome",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "progresso",
-            "columnName": "progresso",
-            "affinity": "INTEGER",
-            "notNull": true
-          }
-        ],
-        "primaryKey": {
-          "columnNames": [
-            "id"
-          ],
-          "autoGenerate": true
-        },
-        "indices": [
-          {
-            "name": "index_usuario_id",
-            "unique": true,
-            "columnNames": [
-              "id"
-            ],
-            "createSql": "CREATE UNIQUE INDEX `index_usuario_id` ON `${TABLE_NAME}` (`id`)"
-          }
-        ],
-        "foreignKeys": []
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"5683438c0f4b9c5ed4f3ac2eb638f663\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"478edf26d90286fa3e08c0892563081e\")"
     ]
   }
 }

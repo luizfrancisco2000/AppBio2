@@ -24,6 +24,7 @@ import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.R;
 import com.example.aluno.appbio.Repository.AssuntoRepository;
 import com.example.aluno.appbio.Repository.ConteudoRepository;
+import com.example.aluno.appbio.Repository.LaminaRepository;
 import com.example.aluno.appbio.Repository.PerguntaRepository;
 
 import java.util.List;
@@ -186,6 +187,7 @@ public class TelaPrincipal extends AppCompatActivity implements NavigationView.O
                     ConteudoRepository.populaBanco(a, TelaPrincipal.this);
                     progressDialog.setProgress(progressDialog.getProgress() * 2);
                 }
+                LaminaRepository.populaBanco(TelaPrincipal.this);
                 PerguntaRepository.populaBanco(TelaPrincipal.this);
                 progressDialog.setProgress(100);
             } catch (Exception e) {

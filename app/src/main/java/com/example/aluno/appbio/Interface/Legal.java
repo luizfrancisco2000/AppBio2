@@ -13,8 +13,6 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.aluno.appbio.R;
-import com.example.aluno.appbio.Util.SharedPreferencesManager;
-import com.example.aluno.appbio.Util.TextViewFontSizeSetter;
 
 import java.util.List;
 
@@ -41,10 +39,8 @@ public class Legal extends AppCompatActivity implements NavigationView.OnNavigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_legal);
 
-        SharedPreferencesManager manager = new SharedPreferencesManager(this);
 
         ButterKnife.bind(this);
-        ButterKnife.apply(labels, TextViewFontSizeSetter.SET_FONT_SIZE, manager.getFont());
 
         setSupportActionBar(toolbar);
 

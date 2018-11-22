@@ -30,8 +30,6 @@ public class Conteudo implements Serializable {
     @NonNull
     private String conceito;
 
-    private long imagemId;
-
     @NonNull
     @ColumnInfo(name = "assunto_id")
     private long assunto_id;
@@ -43,14 +41,6 @@ public class Conteudo implements Serializable {
     public Conteudo(@NonNull String caracteristica, @NonNull String conceito, @NonNull long assunto_id) {
         this.caracteristica = caracteristica;
         this.conceito = conceito;
-        this.assunto_id = assunto_id;
-    }
-
-    @Ignore
-    public Conteudo(@NonNull String caracteristica, @NonNull String conceito, long imagemId, @NonNull long assunto_id) {
-        this.caracteristica = caracteristica;
-        this.conceito = conceito;
-        this.imagemId = imagemId;
         this.assunto_id = assunto_id;
     }
 
@@ -81,14 +71,6 @@ public class Conteudo implements Serializable {
         this.conceito = conceito;
     }
 
-    public long getImagemId() {
-        return imagemId;
-    }
-
-    public void setImagemId(long imagemId) {
-        this.imagemId = imagemId;
-    }
-
     @NonNull
     public long getAssunto_id() {
         return assunto_id;
@@ -104,7 +86,6 @@ public class Conteudo implements Serializable {
                 "id=" + id +
                 ", caracteristica='" + caracteristica + '\'' +
                 ", conceito='" + conceito + '\'' +
-                ", imagemId=" + imagemId +
                 ", assunto_id=" + assunto_id +
                 '}';
     }
@@ -115,30 +96,30 @@ public class Conteudo implements Serializable {
             case "Tecido Epitelial":
                 conteudos = new Conteudo[]{
                         new Conteudo("O tecido epitelial glandular tem a capacidade de:", "Revestir, Sintetizar, Secretar",assunto_id),
-                        new Conteudo("O tecido epitelial caracteriza-se por apresentar:", "Pouca quantidade de material intercelular, Células justapostas, Ausência de vasos sangíneos", R.drawable.pele_fina, assunto_id),
-                        new Conteudo("Os epitélios podem ser classificados em:", "Epitélio Simples, Estratificados, Pseudo-estratificados", R.drawable.pele_fina_2, assunto_id),
-                        new Conteudo("As formas das células do tecido epitelial são classificadas em:", "Pavimentosas, Cúbicas, Prismáticas", R.drawable.esofago, assunto_id),
-                        new Conteudo("Os epitélios são classificados em dois tipos principais:", "Espitélios de Revestimento, Epitélios Glandulares", R.drawable.tireoide, assunto_id),
+                        new Conteudo("O tecido epitelial caracteriza-se por apresentar:", "Pouca quantidade de material intercelular, Células justapostas, Ausência de vasos sangíneos", assunto_id),
+                        new Conteudo("Os epitélios podem ser classificados em:", "Epitélio Simples, Estratificados, Pseudo-estratificados", assunto_id),
+                        new Conteudo("As formas das células do tecido epitelial são classificadas em:", "Pavimentosas, Cúbicas, Prismáticas", assunto_id),
+                        new Conteudo("Os epitélios são classificados em dois tipos principais:", "Espitélios de Revestimento, Epitélios Glandulares", assunto_id),
                         new Conteudo("O tecido epitelial apresenta células…", "mantidas pelo Glicocálix e íon cálcio, Aderidas pelos desmossomos e interdigitações", assunto_id),
                         new Conteudo("A substância intercelular do tecido epitelial é formada por:", "Glicoproteínas", assunto_id),
                         new Conteudo("Os tecidos epiteliais são:", "Avascularizados (sem vasos sanguíneos)", assunto_id),
                         new Conteudo("O tecido epitelial é apoiado pelo tecido conjuntivo", "Nutrem o epitélio por meio de difusão", assunto_id),
                         new Conteudo("Entre o tecido epitelial e conjuntivo está presente a:", "Lâmina Basal", assunto_id),
-                        new Conteudo("A lâmina basal é constituida por:", "Colágeno e glicoproteínas diversas", R.drawable.tecido_muscular, assunto_id),
+                        new Conteudo("A lâmina basal é constituida por:", "Colágeno e glicoproteínas diversas", assunto_id),
                         new Conteudo("A lâmina basal prende o epitélio ao tecido conjuntivo adjacente", "Seu aspecto possibilita a troca de substâncias entre eles", assunto_id),
-                        new Conteudo("O tecido epitelial tem origem em três folhetos embrionários:", "Extoderme, Mesoderme, Endoderme", R.drawable.hipofise, assunto_id),
-                        new Conteudo("Originam-se da Ectoderme:", "Epitélios de revestimento (epiderme), Boca / cavidades nasais e ânus, Glândulas mamárias / salivares e sebáceas", R.drawable.pele_grossa_3, assunto_id),
+                        new Conteudo("O tecido epitelial tem origem em três folhetos embrionários:", "Extoderme, Mesoderme, Endoderme", assunto_id),
+                        new Conteudo("Originam-se da Ectoderme:", "Epitélios de revestimento (epiderme), Boca / cavidades nasais e ânus, Glândulas mamárias / salivares e sebáceas", assunto_id),
                         new Conteudo("Originam-se da Mesoderme:", "Epitélio de revestimento dos vasos sanguíneos, Epitélios do Sistema Geniturinário, Epitélio de revestiemnto de menbranas dos órgãos internos", assunto_id),
                         new Conteudo("Originam-se da Endoderme:", "Tecidos epiteliais de revestimento do tubo digestório (exceto boca e ânus), Tecidos do Sistema Respiratório, Tecidos de órgãos como bexiga / fígado e pâncreas, Tecido das glândulas tireoide e paratireoide", assunto_id),
-                        new Conteudo("Função do Tecido Epitelial - Proteção e revestimento:", "Revestem externamente o organismo, diversos órgãos e cavidades do corpo", R.drawable.pele_grossa, assunto_id),
-                        new Conteudo("Função do Tecido Epitelial - Absorção de nutrientes:", "Epitélio absortivo do intestino", R.drawable.jejuno_ileo, assunto_id),
+                        new Conteudo("Função do Tecido Epitelial - Proteção e revestimento:", "Revestem externamente o organismo, diversos órgãos e cavidades do corpo", assunto_id),
+                        new Conteudo("Função do Tecido Epitelial - Absorção de nutrientes:", "Epitélio absortivo do intestino", assunto_id),
                         new Conteudo("Função do Tecido Epitelial - Trocas gasosas:", "Tecido epitelial de revestimento dos alvéolos pulmonares", assunto_id),
                         new Conteudo("Função do Tecido Epitelial - Secreção de substâncias:", "Tecido epitelial de secreção", assunto_id),
                         new Conteudo("Função do Tecido Epitelial - Percepção de estímulos sensoriais:", "Neuroepitélio", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Apresentam polaridade estrutural:", "Polo Basal: contato com a lâmina basal subjacente, Polo Apical: Superficie celular livre", assunto_id),
-                        new Conteudo("Especialização das Células Epiteliais - Cílios:", "Estruturas microscópicas móveis presentes em células da traqueia e das tubas uterinas", R.drawable.traqueia, assunto_id),
+                        new Conteudo("Especialização das Células Epiteliais - Cílios:", "Estruturas microscópicas móveis presentes em células da traqueia e das tubas uterinas", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Microvilosidades:", "Estruturas projetadas na superfície apical das células absortivas, Ampliam a superfície de contato das células intestinais com o conteúdo externo, Aumentam a absorção de nutrientes", assunto_id),
-                        new Conteudo("Especialização das Células Epiteliais - Interdigitações:", "Dobras internas da membrana plasmática em células de alguns epitélios, Aumentam a superfície de contato entre as células, Facilitam o intercâmbio de substâncias.", R.drawable.traqueia_2, assunto_id),
+                        new Conteudo("Especialização das Células Epiteliais - Interdigitações:", "Dobras internas da membrana plasmática em células de alguns epitélios, Aumentam a superfície de contato entre as células, Facilitam o intercâmbio de substâncias.", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Junções Intercelulares:", "Fornecem grande coesão ao tecido epitelial tornando altamente resistente a trações", assunto_id),
                         new Conteudo("Especialização das Células Epiteliais - Principais Junções Intercelulares:", "Junção de Oclusão - Junção de Adesão, Desmossomos – Hemidesmossomos, Junções Comunicantes", assunto_id),
                         new Conteudo("Tecido Epitelial Glandular:", "Produzem substâncias chamadas secreções, Podem ser utilizadas em outras partes do corpo ou eliminadas do organismo", assunto_id),
@@ -153,20 +134,20 @@ public class Conteudo implements Serializable {
                 break;
             case "Tecido Conjuntivo":
                 conteudos = new Conteudo[]{
-                        new Conteudo("O Tecido Conjuntivo Cartilaginoso é formado por:", "Fibras Colágenas, Fibras Reticulares, Glicoproteínas", R.drawable.bexiga_2, assunto_id)
+                        new Conteudo("O Tecido Conjuntivo Cartilaginoso é formado por:", "Fibras Colágenas, Fibras Reticulares, Glicoproteínas", assunto_id)
                 };
                 break;
             case "Tecido Adiposo":
                 conteudos = new Conteudo[]{
-                        new Conteudo("A função do tecido adiposo é de:", "Armazenar energia na forma de triglicerídeos, Contribuir para a forma externa do corpo, Amortecer/proteger o organismo contra choques mecânicos, Realizar isolamento térmico, Preencher espaços entre outros tecidos/órgãos",R.drawable.bexiga, assunto_id)
+                        new Conteudo("A função do tecido adiposo é de:", "Armazenar energia na forma de triglicerídeos, Amortecer/proteger o organismo contra choques mecânicos, Realizar isolamento térmico", assunto_id)
                 };
                 break;
             case "Tecido Cartilaginoso":
                 conteudos = new Conteudo[]{
-                        new Conteudo("Os tipos celulares do tecido Cartilaginoso são formados por:", "Condroblastos, Condrócitos", R.drawable.ossificacao_endrocondral, assunto_id),
-                        new Conteudo("As características do tecido Cartilaginoso são:", "Origem mesenquimática, Proporção células/matriz extracelular semelhante ao conjuntivo, A matriz é secretada pelas células da cartilagem e é a responsável pelas diferentes características e propriedades da mesma", R.drawable.ossificacao_3, assunto_id),
-                        new Conteudo("Os tipos de cartilagem do tecido cartilaginoso são formados por:", "Fibrosa: Fibras colágenas do tipo I, Hialina: Fibras colágenas do tipo II, Elástica: Fibras colágenas do tipo II e fibras elásticas ", R.drawable.jejuno_ileo_2, assunto_id),
-                        new Conteudo("A cartilagem Hialina tem aspecto:", "Aspecto macroscópico: leitoso / azulado, Cortes histológicos: transparente (hialina),  Presente no esqueleto embrionário / articulações dos ossos longos / traqueia e brônquios / nariz.", R.drawable.medula_espinhal, assunto_id)
+                        new Conteudo("Os tipos celulares do tecido Cartilaginoso são formados por:", "Condroblastos, Condrócitos", assunto_id),
+                        new Conteudo("As características do tecido Cartilaginoso são:", "Origem mesenquimática, Proporção células/matriz extracelular semelhante ao conjuntivo, A matriz é secretada pelas células da cartilagem e é a responsável pelas diferentes características e propriedades da mesma", assunto_id),
+                        new Conteudo("Os tipos de cartilagem do tecido cartilaginoso são formados por:", "Fibrosa: Fibras colágenas do tipo I, Hialina: Fibras colágenas do tipo II, Elástica: Fibras colágenas do tipo II e fibras elásticas ", assunto_id),
+                        new Conteudo("A cartilagem Hialina tem aspecto:", "Aspecto macroscópico: leitoso / azulado, Cortes histológicos: transparente (hialina),  Presente no esqueleto embrionário / articulações dos ossos longos / traqueia e brônquios / nariz.", assunto_id)
                 };
                 break;
         }

@@ -31,18 +31,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></ListView>
 
-            <TextView
-                android:id="@+id/lbl_tamanho_fonte"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_tamanho_fonte"
-                android:textAppearance="@style/AppTheme.txt" />
-
-            <Spinner
-                android:id="@+id/spinner_font_size"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/arr_str_tamanho_fonte" />
 
             <Button
                 android:id="@+id/btn_salvar"

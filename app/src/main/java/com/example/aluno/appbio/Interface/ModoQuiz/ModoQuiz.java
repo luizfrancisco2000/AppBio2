@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -21,6 +22,7 @@ import com.example.aluno.appbio.Repository.PerguntaRepository;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,13 +57,14 @@ public class ModoQuiz extends AppCompatActivity {
     @BindView(R.id.op2)
     public RadioButton rb2;
 
-    @BindView(R.id.op3)
-    public RadioButton rb3;
-
     @BindView(R.id.btn_confirmar_proximo)
     public Button button;
 
     private ColorStateList textColorDefaultRb;
+    private ColorStateList textColorDefaultCd;
+
+    private CountDownTimer countDownTimer;
+    private long tempoRestanteInMillis;
 
     private List<Pergunta> perguntaList;
 
@@ -79,6 +82,8 @@ public class ModoQuiz extends AppCompatActivity {
 
     private long backPressedTime;
 
+    private static final long COUNTDOWN_IN_MILLS = 30000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +92,7 @@ public class ModoQuiz extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         textColorDefaultRb = rb1.getTextColors();
-
+        textColorDefaultCd = txtTempo.getTextColors();
 
         try {
             Intent intent = getIntent();
@@ -115,7 +120,6 @@ public class ModoQuiz extends AppCompatActivity {
     private void proximaPergunta() {
         rb1.setTextColor(textColorDefaultRb);
         rb2.setTextColor(textColorDefaultRb);
-        rb3.setTextColor(textColorDefaultRb);
 
         groupRespostas.clearCheck();
 
@@ -125,7 +129,6 @@ public class ModoQuiz extends AppCompatActivity {
             txtPergunta.setText(perguntaAtual.getPergunta());
             rb1.setText(perguntaAtual.getOp1());
             rb2.setText(perguntaAtual.getOp2());
-            rb3.setText(perguntaAtual.getOp3());
 
             contadorPerguntas++;
             txtNumPerguntas.setText("Pergunta: " + contadorPerguntas + "/" + totalPerguntas);
@@ -133,19 +136,49 @@ public class ModoQuiz extends AppCompatActivity {
             respondido = false;
 
             button.setText(R.string.confirmar);
+
+            tempoRestanteInMillis = COUNTDOWN_IN_MILLS;
+            startCountDown();
         } else {
             finalizarQuiz();
+        }
+    }
+
+    private void startCountDown() {
+        countDownTimer = new CountDownTimer(tempoRestanteInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                tempoRestanteInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                tempoRestanteInMillis = 0;
+                updateCountDownText();
+                verificarResposta();
+            }
+        }.start();
+    }
+
+    private void updateCountDownText() {
+        int minutos = (int) ((tempoRestanteInMillis / 1000) / 60);
+        int segundos = (int) ((tempoRestanteInMillis / 1000) % 60);
+
+        String tempoFormatado = String.format(Locale.getDefault(), "%02d:%02d", minutos, segundos);
+        txtTempo.setText(tempoFormatado);
+
+        if (tempoRestanteInMillis < 10000) {
+            txtTempo.setTextColor(Color.RED);
+        } else {
+            txtTempo.setTextColor(textColorDefaultCd);
         }
     }
 
     @OnClick(R.id.btn_confirmar_proximo)
     public void click() {
         if (!respondido) {
-            if (rb1.isChecked() || rb2.isChecked() || rb3.isChecked()) {
-                verificarResposta();
-            } else {
-                Toast.makeText(ModoQuiz.this, "Selecione uma opção!", Toast.LENGTH_LONG).show();
-            }
+            verificarResposta();
         } else {
             proximaPergunta();
         }
@@ -153,6 +186,8 @@ public class ModoQuiz extends AppCompatActivity {
 
     private void verificarResposta() {
         respondido = true;
+
+        countDownTimer.cancel();
 
         RadioButton selecionado = findViewById(groupRespostas.getCheckedRadioButtonId());
         int resposta = groupRespostas.indexOfChild(selecionado) + 1;
@@ -167,7 +202,6 @@ public class ModoQuiz extends AppCompatActivity {
     private void mostrarResposta() {
         rb1.setTextColor(Color.RED);
         rb2.setTextColor(Color.RED);
-        rb3.setTextColor(Color.RED);
 
         switch (perguntaAtual.getResposta()) {
             case 1:
@@ -178,11 +212,6 @@ public class ModoQuiz extends AppCompatActivity {
             case 2:
                 rb2.setTextColor(Color.GREEN);
                 txtPergunta.setText("Resposta 2 é a correta!");
-                break;
-
-            case 3:
-                rb3.setTextColor(Color.GREEN);
-                txtPergunta.setText("Resposta 3 é a correta!");
                 break;
         }
 
@@ -215,6 +244,14 @@ public class ModoQuiz extends AppCompatActivity {
             Toast.makeText(this, "Pressione novamente para voltar", Toast.LENGTH_SHORT).show();
         }
         backPressedTime = System.currentTimeMillis();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownTimer != null) {
+            countDownTimer.cancel();
+        }
     }
 
     private class GetPerguntas extends AsyncTask<Long, Void, List<Pergunta>> {

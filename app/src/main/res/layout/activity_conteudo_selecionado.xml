@@ -7,171 +7,149 @@
     android:gravity="center_vertical"
     tools:context=".Interface.ModoEstudo.ConteudoSelecionado">
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <include
-                android:id="@+id/include"
-                layout="@layout/toolbar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/lbl_nome_assunto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_horizontal"
-                android:textAppearance="@style/AppTheme.h1_black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/include" />
+        <TextView
+            android:id="@+id/lbl_nome_assunto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/AppTheme.h1_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
 
 
-            <TextView
-                android:id="@+id/lbl_caracteristica"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_horizontal"
-                android:textAppearance="@style/AppTheme.lbl_black"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_nome_assunto"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/lbl_nome_assunto"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_nome_assunto" />
-
-            <ImageView
-                android:id="@+id/img_conceito"
-                android:layout_width="280sp"
-                android:layout_height="280sp"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_caracteristica"
-                app:layout_constraintStart_toStartOf="@+id/lbl_caracteristica"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_caracteristica" />
+        <TextView
+            android:id="@+id/lbl_caracteristica"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/AppTheme.lbl_black"
+            app:layout_constraintEnd_toEndOf="@+id/lbl_nome_assunto"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/lbl_nome_assunto"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_nome_assunto" />
 
 
-            <TextView
-                android:id="@+id/lbl_conceito1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_horizontal"
-                android:textAppearance="@style/AppTheme.txt"
-                app:layout_constraintEnd_toEndOf="@+id/img_conceito"
-                app:layout_constraintStart_toStartOf="@+id/img_conceito"
-                app:layout_constraintTop_toBottomOf="@+id/img_conceito" />
+        <TextView
+            android:id="@+id/lbl_conceito1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/AppTheme.txt"
+            app:layout_constraintEnd_toEndOf="@+id/lbl_caracteristica"
+            app:layout_constraintStart_toStartOf="@+id/lbl_caracteristica"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_caracteristica" />
 
 
-            <TextView
-                android:id="@+id/lbl_conceito2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_horizontal"
-                android:textAppearance="@style/AppTheme.txt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@+id/lbl_conceito1"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_conceito1" />
+        <TextView
+            android:id="@+id/lbl_conceito2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/AppTheme.txt"
+            app:layout_constraintEnd_toEndOf="@+id/lbl_conceito1"
+            app:layout_constraintStart_toStartOf="@+id/lbl_conceito1"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_conceito1" />
 
-            <TextView
-                android:id="@+id/lbl_conceito3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:gravity="center_horizontal"
-                android:textAppearance="@style/AppTheme.txt"
-                app:layout_constraintEnd_toEndOf="@+id/lbl_conceito2"
-                app:layout_constraintStart_toStartOf="@+id/lbl_conceito2"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_conceito2" />
+        <TextView
+            android:id="@+id/lbl_conceito3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/AppTheme.txt"
+            app:layout_constraintEnd_toEndOf="@+id/lbl_conceito2"
+            app:layout_constraintStart_toStartOf="@+id/lbl_conceito2"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_conceito2" />
 
 
-            <Button
-                android:id="@+id/btn_anterior"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/formato_botao_vermelho"
-                android:drawableStart="@drawable/ic_point_left"
-                android:drawableLeft="@drawable/ic_point_left"
-                android:text="@string/lbl_btn_anterior"
-                android:textColor="#FFFFFF"
+        <Button
+            android:id="@+id/btn_anterior"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/formato_botao_vermelho"
+            android:drawableStart="@drawable/ic_point_left"
+            android:drawableLeft="@drawable/ic_point_left"
+            android:text="@string/lbl_btn_anterior"
 
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_conceito3" />
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <Button
-                android:id="@+id/btn_ok"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:background="@drawable/formato_botao_verde"
-                android:text="@android:string/ok"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_proximo"
-                app:layout_constraintStart_toEndOf="@+id/btn_anterior"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_conceito3" />
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/formato_botao_verde"
+            android:text="@android:string/ok"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_proximo"
+            app:layout_constraintStart_toEndOf="@+id/btn_anterior" />
 
-            <Button
-                android:id="@+id/btn_proximo"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_weight="1"
-                android:background="@drawable/formato_botao_azul"
+        <Button
+            android:id="@+id/btn_proximo"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="1"
 
-                android:drawableEnd="@drawable/ic_point_right"
-                android:drawableRight="@drawable/ic_point_right"
-                android:text="@string/lbl_btn_proximo"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_conceito3" />
+            android:background="@drawable/formato_botao_azul"
+            android:drawableEnd="@drawable/ic_point_right"
+            android:drawableRight="@drawable/ic_point_right"
+            android:text="@string/lbl_btn_proximo"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        </android.support.constraint.ConstraintLayout>
-    </ScrollView>
-
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

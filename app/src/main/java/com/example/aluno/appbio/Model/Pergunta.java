@@ -32,9 +32,6 @@ public class Pergunta implements Serializable {
     private String op2;
 
     @NonNull
-    private String op3;
-
-    @NonNull
     private int resposta;
 
     @NonNull
@@ -45,11 +42,10 @@ public class Pergunta implements Serializable {
     }
 
     @Ignore
-    public Pergunta(@NonNull String pergunta, @NonNull String op1, @NonNull String op2, @NonNull String op3, @NonNull int resposta, @NonNull long assunto_id) {
+    public Pergunta(@NonNull String pergunta, @NonNull String op1, @NonNull String op2, @NonNull int resposta, @NonNull long assunto_id) {
         this.pergunta = pergunta;
         this.op1 = op1;
         this.op2 = op2;
-        this.op3 = op3;
         this.resposta = resposta;
         this.assunto_id = assunto_id;
     }
@@ -91,15 +87,6 @@ public class Pergunta implements Serializable {
     }
 
     @NonNull
-    public String getOp3() {
-        return op3;
-    }
-
-    public void setOp3(@NonNull String op3) {
-        this.op3 = op3;
-    }
-
-    @NonNull
     public int getResposta() {
         return resposta;
     }
@@ -124,7 +111,6 @@ public class Pergunta implements Serializable {
                 ", pergunta='" + pergunta + '\'' +
                 ", op1='" + op1 + '\'' +
                 ", op2='" + op2 + '\'' +
-                ", op3='" + op3 + '\'' +
                 ", resposta=" + resposta +
                 ", assunto_id=" + assunto_id +
                 '}';
@@ -132,52 +118,50 @@ public class Pergunta implements Serializable {
 
     public static Pergunta[] populaBanco() {
         return new Pergunta[]{
-                new Pergunta("O tecido epitelial glandular tem a capacidade de:", "Secretar", "Revestir", "", 1, 1),
-                new Pergunta("O tecido epitelial caracteriza-se por apresentar:", "", "Pouca quantidade de material intercelular", "", 2, 2),
-                new Pergunta("Os epitélios podem ser classificados em:", "", "", "Epitélio Simples, Estratificados, Pseudo-estratificados", 3, 1),
-                new Pergunta("As formas das células do tecido epitelial são classificadas em:", "", "Pavimentosas, Cúbicas, Prismáticas", "", 2, 1),
-                new Pergunta("Os epitélios são classificados em dois tipos principais:", "", "", "Espitélios de Revestimento, Epitélios Glandulares", 3, 1),
-                new Pergunta("O tecido epitelial apresenta células…", "", "mantidas pelo Glicocálix e íon cálcio, Aderidas pelos desmossomos e interdigitações", "", 2, 1),
-                new Pergunta("A substância intercelular do tecido epitelial é formada por:", "", "Glicoproteínas", "", 2, 1),
-                new Pergunta("Os tecidos epiteliais são:", "Avascularizados (sem vasos sanguíneos)", "", "", 1, 1),
-                new Pergunta("O tecido epitelial é apoiado pelo tecido conjuntivo, isso quer dizer que:", "", "", "Nutrem o epitélio por meio de difusão", 3, 1),
-                new Pergunta("Entre o tecido epitelial e conjuntivo está presente a:", "", "Lâmina Basal", "", 2, 1),
-                new Pergunta("A lâmina basal é constituida por:", "", "", "Colágeno e glicoproteínas diversas", 3, 1),
-                new Pergunta("A lâmina basal prende o epitélio ao tecido conjuntivo adjacente, possibilitando:", "Seu aspecto possibilita a troca de substâncias entre eles", "", "", 1, 1),
-                new Pergunta("O tecido epitelial tem origem em quais folhetos embrionários?", "", "Exoderme, Mesoderme, Endoderme", "", 2, 1),
-                new Pergunta("Originam-se da ectoderme:", "", "Epitélios de revestimento (epiderme)", "", 2, 1),
-                new Pergunta("Originam-se da Mesoderme:", "Epitélio de revestimento dos vasos sanguíneos (endotélio)", "", "", 1, 1),
-                new Pergunta("Originam-se da Endoderme:", "", "Tecidos epiteliais de revestimento do tubo digestório (exceto boca e ânus)", "", 2, 1),
-                new Pergunta("Função do Tecido Epitelial - Proteção e revestimento:", "Revestem externamente o organismo, diversos órgãos e cavidades do corpo", "", "", 1, 1),
-                new Pergunta("Função do Tecido Epitelial - Absorção de nutrientes:", "", "Epitélio absortivo do intestino", "", 2, 1),
-                new Pergunta("Função do Tecido Epitelial - Trocas gasosas:", "", "", "Tecido epitelial de revestimento dos alvéolos pulmonares", 3, 1),
-                new Pergunta("Função do Tecido Epitelial - Secreção de substâncias:", "", "Tecido epitelial de secreção", "", 2, 1),
-                new Pergunta("Função do Tecido Epitelial - Percepção de estímulos sensoriais:", "Neuroepitélio", "", "", 1, 1),
-                new Pergunta("Especialização das Células Epiteliais - Apresentam polaridade estrutural:", "polo Basal, Polo Apical", "", "", 1, 1),
-                new Pergunta("Especialização das Células Epiteliais - Cílios:", "", "Estruturas microscópicas móveis presentes em células da traqueia e das tubas uterinas", "", 2, 1),
-                new Pergunta("Especialização das Células Epiteliais - Microvilosidades:", "", "", "Estruturas projetadas na superfície apical das células absortivas", 3, 1),
-                new Pergunta("Especialização das Células Epiteliais - Interdigitações:", "", "", "Dobras internas da membrana plasmática em células de alguns epitélios", 3, 1),
-                new Pergunta("Especialização das Células Epiteliais - Junções Intercelulares:", "", "", "Fornecem grande coesão ao tecido epitelial tornando altamente resistente a trações", 3, 1),
-                new Pergunta("Especialização das Células Epiteliais - Principais Junções Intercelulares:", "", "Junção de Oclusão, Desmossomos, Junções Comunicantes", "", 2, 1),
-                new Pergunta("Tecido Epitelial Glandular:", "", "", "Produzem secreções que podem ser utilizadas em outras partes do corpo ou eliminadas do organismo", 3, 1),
-                new Pergunta("Tecido Epitelial Glandular - Secreções:", "", "Mucosas, Serosas, Mistas", "", 2, 1),
-                new Pergunta("Tecido Epitelial Glandular - As glândulas podem ser:", "Unicelulares e multicelulares", "", "", 1, 1),
-                new Pergunta("Tecido Epitelial Glandular - Glândula Unicelular: Caliciforme", "", "Ocorre no tecido epitelial da traquéia", "", 2, 1),
-                new Pergunta("Tecido Epitelial Glandular - Glândulas Multicelulares:", "", "Originam-se sempre dos epitélios de revestimento por proliferação de suas células para o interior do tecido conjuntivo subjacente", "", 2, 1),
-                new Pergunta("Tecido Epitelial Glandular - Existem três tipos de glândulas multicelulares:", "", "Glândulas Exócrinas, Glândulas Endócrinas, Glândulas Mistas", "", 2, 1),
-                new Pergunta("Tecido Epitelial Glandular - Glândulas Exócrinas:", "", "", "Para fora do corpo, Para interior das cavidades do corpo", 3, 1),
-                new Pergunta("Tecido Epitelial Glandular - Glândulas Endócrinas:", "As secreções são hormônios e lançados diretamente nos vasos sanguíneos e linfáticos", "", "", 1, 1),
+                new Pergunta("O tecido epitelial glandular tem a capacidade de:", "Sintetizar", "Secretar", 2, 1),
+                new Pergunta("O tecido epitelial caracteriza-se por apresentar:", "Muita quantidade de material intercelular", "Ausência de vasos sanguíneos", 2, 1),
+                new Pergunta("Os epitélios podem ser classificados em:", "Não Estratificado ( sem camada)", "Estratificados (mais de uma camada)", 2, 1),
+                new Pergunta("A forma das células do tecido epitelial são classificadas em:", "Pavimentosas (achatadas)", "Ondulares (alongadas)", 1, 1),
+                new Pergunta("Os epitélios são classificados em dois tipos principais:", "Epitélios de Revestimento e Glandulares", "Epitélios de Fixação e Nervoso", 1, 1),
+                new Pergunta("O tecido epitelial apresenta células…", "Mantidas pelo Glicocálix e íon cálcio", "Mantidas pelo RER e íon potássio", 1, 1),
+                new Pergunta("A substância intercelular do tecido epitelial é formada por:", "Lipídios", "Glicoproteínas", 2, 1),
+                new Pergunta("Os tecidos epiteliais são:", "Vascularizados", "Avascularizados", 2, 1),
+                new Pergunta("O tecido epitelial é apoiado pelo tecido conjuntivo e...", "Nutrem o epitélio por meio de fusão", "Nutrem o epitélio por meio de difusão", 2, 1),
+                new Pergunta("Entre o tecido epitelial e conjuntivo está presente a:", "Lâmina Basal", "Canal Central", 1, 1),
+                new Pergunta("A lâmina basal é constituida por:", "Colágeno e glicoproteínas diversas", "Melanina e glicoproteínas diversas", 1, 1),
+                new Pergunta("A lâmina basal prende o epitélio ao tecido conjuntivo adjacente", "Seu aspecto possibilita a troca de substâncias entre eles", "Seu aspecto NÃO possibilita a troca de substâncias entre eles", 1, 1),
+                new Pergunta("O tecido epitelial tem origem em três folhetos embrionários:", "Mesoderme, Epiderme e Ortoderme", "Ectoderme. Mesoderme e Endoderme", 2, 1),
+                new Pergunta("Originam-se da ectoderme:", "Esôfago, Pulmão e Boca", "Boca, cavidades nasais e ânus", 2, 1),
+                new Pergunta("Originam-se da Mesoderme:", "Epitélio de revestimento dos vasos sanguíneos", "Epitélios do Sistema Geniturinário ( incluindo a bexiga)", 1, 1),
+                new Pergunta("Originam-se da Endoderme:", "Tecidos epiteliais de revestimento do tubo digestório (exceto boca e ânus)", "Tecidos do Sistema Nervoso", 1, 1),
+                new Pergunta("Função do Tecido Epitelial", "Circulação e sintetização", "Proteção e revestimento", 2, 1),
+                new Pergunta("Função do Tecido Epitelial", "Nutrição dos tecidos", "Absorção de nutrientes:", 2, 1),
+                new Pergunta("Função do Tecido Epitelial", "Trocas gasosas", "Preenchimento", 1, 1),
+                new Pergunta("Função do Tecido Epitelial", "Secreção de substâncias", "Condução de substâncias", 1, 1),
+                new Pergunta("Função do Tecido Epitelial", "Vascularização", "Percepção de estímulos sensoriais:", 2, 1),
+                new Pergunta("Especialização das Células Epiteliais", "Apresentam polaridade funcional", "Apresentam polaridade estrutural", 2, 1),
+                new Pergunta("Especialização das Células Epiteliais", "Cílios", "Dentritos", 1, 1),
+                new Pergunta("Especialização das Células Epiteliais", "Microvilosidades", "Macrovilosidades", 1, 1),
+                new Pergunta("Especialização das Células Epiteliais", "Intercalações", "Interdigitações", 2, 1),
+                new Pergunta("Especialização das Células Epiteliais", "Junções Extracelulares", "Junções Intercelulares", 2, 1),
+                new Pergunta("Especialização das Células Epiteliais", "Junção de Oclusão - Junção de Adesão", "Junções de Inclusão – Junção de Reação", 1, 1),
+                new Pergunta("Tecido Epitelial Glandular", "Produzem substâncias chamadas secreções", "Não produzem substâncias", 1, 1),
+                new Pergunta("As secreções do tecido epitelial glandular podem ser:", "Unificadas, Secas e Líquidas", "Mucosas, Serosas e Mistas", 2, 1),
+                new Pergunta("As glândulas podem ser:", "Apenas Unicelulares", "Unicelulares e multicelulares", 2, 1),
+                new Pergunta("Tecido Epitelial Glandular contém:", "Glândula Unicelular", "Glândula Pluricelular", 1, 1),
+                new Pergunta("Tecido Epitelial Glandular NÃO possui:", "Glândulas Multicelulares", "Glândulas Neuronais", 1, 1),
+                new Pergunta("Existem três tipos de glândulas multicelulares:", "Glândulas Serosas, Externas e Unificadas", "Glândulas Exócrinas, Endócrinas e Mistas", 2, 1),
+                new Pergunta("Tecido Epitelial Glandular possui:", "Glândulas Digestivas", "Glândulas Exócrinas", 2, 1),
+                new Pergunta("Glândulas Endócrinas:", "Apresentam dutos associados à porção secretora", "Não apresentam dutos associados à porção secretora", 1, 1),
 
-                new Pergunta("O Tecido Conjuntivo Cartilaginoso é formado por?", "", "Fibras Colágenas, Fibras Reticulares, Glicoproteínas", "", 2, 2),
+                new Pergunta("O Tecido Conjuntivo Cartilaginoso é formado por:", "Fibras Colágenas", "Fibras Capilares", 1, 2),
 
-                new Pergunta("A função do tecido adiposo é de?", "Armazenar energia, proteger contra choques mecânicos, isolamento térmico", "", "", 1, 3),
+                new Pergunta("A função do tecido adiposo é de :", "Preencher espaços entre outros tecidos/órgãos", "Isolar os tecidos dos órgãos", 1, 3),
 
-                new Pergunta("Os tipos celulares do tecido Cartilaginoso são formados por?", "Condroblastos, Condrócitos", "", "", 1, 4),
-                new Pergunta("As características do tecido Cartilaginoso são?", "", "Origem mesenquimática, proporção células/matriz extracelular semelhante ao conjuntivo", "", 2, 4),
-                new Pergunta("Os tipos de cartilagem do tecido cartilaginoso são formados por?", "", "", "Fibrosa, Hialina, Elástica", 3, 4),
-                new Pergunta("No aspecto macroscópico, a cartilagem Hialina tem aspecto:", "", "", "Leitoso e azulado", 3, 4),
-                new Pergunta("Em um corte histológico, a cartilagem Hialina é:", "Transparente", "", "", 1, 4),
-                new Pergunta("A cartilagem Hialima está presente:", "", "No esqueleto embrionário, traqueia e brônquios, nariz", "", 2, 4)
+                new Pergunta("Os tipos celulares do tecido Cartilaginoso é formado por:", "Cloroplastos", "Condroblastos", 2, 4),
+                new Pergunta("As características do tecido Cartilaginoso é formada por:", "Origem endequimática", "Origem mesenquimática", 2, 4),
+                new Pergunta("Os tipos de cartilagem do tecido cartilaginoso são formados por:", "Hialina, Elástica e Fibrosa", "Mielina, Justas e Alongadas", 1, 4),
+                new Pergunta("A cartilagem Hialina tem aspecto:", "Aspecto macroscópico: leitoso, azulado", "Aspecto microscópico, seco e esverdeado", 1, 4),
         };
     }
 }

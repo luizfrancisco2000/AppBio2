@@ -36,9 +36,6 @@ public class ConteudoSelecionado extends AppCompatActivity {
     @BindView(R.id.lbl_nome_assunto)
     public TextView lblAssunto;
 
-    @BindView(R.id.img_conceito)
-    ImageView imgView;
-
     private int posicaoConteudo;
     private Assunto assunto;
     private List<Conteudo> conteudos;
@@ -104,7 +101,6 @@ public class ConteudoSelecionado extends AppCompatActivity {
 
         lblAssunto.setText(assunto.getNome());
         lblCaracteristica.setText(conteudo.getCaracteristica());
-        imgView.setImageResource((int) conteudo.getImagemId());
     }
 
     @OnClick(R.id.btn_anterior)

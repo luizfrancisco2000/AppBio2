@@ -80,10 +80,15 @@
         <!-- Listar todos os conteudos -->
         <activity
             android:name=".Interface.ModoEstudo.MostrarConteudos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
+        <!-- Conceito aleatório para a tela de bloqueio-->
         <activity
             android:name=".Interface.ConceitoAleatorio"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <!-- Exibe a lâmina selecionada-->
+        <activity android:name=".Interface.ModoEstudo.LaminaSelecionada"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

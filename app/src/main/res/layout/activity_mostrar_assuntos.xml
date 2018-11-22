@@ -51,6 +51,10 @@
             android:id="@+id/list_assuntos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></ListView>
+        <ListView
+            android:id="@+id/list_laminas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></ListView>
     </LinearLayout>
 
 

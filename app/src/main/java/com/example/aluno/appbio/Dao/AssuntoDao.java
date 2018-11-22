@@ -10,9 +10,6 @@ import java.util.List;
 public interface AssuntoDao {
 
     @Insert
-    void salvar (Assunto assunto);
-
-    @Insert
     void salvarTodos(Assunto... assuntos);
 
     @Update
@@ -20,7 +17,6 @@ public interface AssuntoDao {
 
     @Query("SELECT * FROM assunto")
     List<Assunto> getAll();
-
 
     @Query("SELECT * FROM assunto WHERE ativo = 1")
     List<Assunto> getAllAtivos();

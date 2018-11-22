@@ -7,29 +7,29 @@ import android.content.Context;
 
 import com.example.aluno.appbio.Dao.AssuntoDao;
 import com.example.aluno.appbio.Dao.ConteudoDao;
+import com.example.aluno.appbio.Dao.LaminaDao;
 import com.example.aluno.appbio.Dao.PerguntaDao;
-import com.example.aluno.appbio.Dao.UsuarioDao;
 import com.example.aluno.appbio.Model.Assunto;
 import com.example.aluno.appbio.Model.Conteudo;
+import com.example.aluno.appbio.Model.Lamina;
 import com.example.aluno.appbio.Model.Pergunta;
-import com.example.aluno.appbio.Model.Usuario;
 
-@Database(entities = {Assunto.class, Conteudo.class, Pergunta.class, Usuario.class}, version = 1)
+@Database(entities = {Assunto.class, Conteudo.class, Lamina.class, Pergunta.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract AssuntoDao assuntoDao();
 
     public abstract ConteudoDao conteudoDao();
 
-    public abstract PerguntaDao perguntaDao();
+    public abstract LaminaDao laminaDao();
 
-    public abstract UsuarioDao usuarioDao();
+    public abstract PerguntaDao perguntaDao();
 
     private static AppDatabase INSTANCE;
 
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "user-database")
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "histo")
                             .build();
         }
         return INSTANCE;

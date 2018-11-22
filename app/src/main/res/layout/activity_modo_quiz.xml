@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/group_respostas"
                 android:layout_marginBottom="16dp"
+                android:padding="15dp"
                 android:textAlignment="center"
                 android:textAppearance="@style/AppTheme.txt" />
 
@@ -86,12 +87,6 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/AppTheme.txt" />
 
-                <RadioButton
-                    android:id="@+id/op3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="@style/AppTheme.txt" />
-
             </RadioGroup>
 
             <Button
@@ -99,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/group_respostas"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/formato_botao_verde"
                 android:text="@string/confirmar"
                 android:textAppearance="@style/AppTheme.lbl_black"

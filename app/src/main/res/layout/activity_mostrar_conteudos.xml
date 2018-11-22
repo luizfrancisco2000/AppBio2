@@ -51,7 +51,8 @@
         <ListView
             android:id="@+id/list_conteudos"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></ListView>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"></ListView>
 
     </LinearLayout>
 
